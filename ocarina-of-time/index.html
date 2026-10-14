@@ -215,6 +215,21 @@ label.step.on .chg{opacity:.6}
 .item.have .iart{filter:drop-shadow(0 0 5px #ffe66d) drop-shadow(0 0 2px #fff);animation:bob 2.6s ease-in-out infinite}
 .item:not(.have) .iart{filter:brightness(1.2) saturate(.75)}
 @keyframes bob{50%{transform:translateY(-3px)}}
+
+/* safe areas (iPhone Home Screen / notch / Dynamic Island) */
+:root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
+html{background:#0d1f17}
+body{padding-top:var(--sat);padding-left:var(--sal);padding-right:var(--sar);box-sizing:border-box}
+body::before{content:"";position:fixed;top:0;left:0;right:0;height:var(--sat);background:#0d1f17;z-index:70;pointer-events:none}
+
+#toast{bottom:calc(92px + var(--sab))}
+.fab{bottom:calc(14px + var(--sab));right:calc(14px + var(--sar))}
+#victory{padding:calc(14px + var(--sat)) calc(14px + var(--sar)) calc(14px + var(--sab)) calc(14px + var(--sal))}
+html #wnCard{top:calc(12px + var(--sat));max-height:calc(80vh - var(--sat))}
+html #wnUpd{bottom:calc(16px + var(--sab))}
+.wrap{padding-bottom:calc(130px + var(--sab))}
+details.fp[open]>summary .psum{display:none}
+@media (max-width:560px){.fab{right:calc(10px + var(--sar));bottom:calc(10px + var(--sab));width:56px;height:56px;min-height:56px;padding:0;border-radius:50%;font-size:26px;display:flex;align-items:center;justify-content:center}.fab .fabtxt{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
 </style>
 </head>
 <body>
@@ -281,7 +296,7 @@ label.step.on .chg{opacity:.6}
 <main id="chapters"></main>
 <footer>Big steps based on the Zelda Dungeon Ocarina of Time walkthrough (original game) and early reports about the 2026 remake. ⚠️ tags mark things that may be different in the new version. Your checks are saved on this device.</footer>
 </div>
-<button class="jump fab" id="jumpFab" aria-label="Jump to my next step">👉 Next</button>
+<button class="jump fab" id="jumpFab" aria-label="Jump to my next step"><span aria-hidden="true">👉</span><span class="fabtxt"> Next</span></button>
 <div id="victory" role="dialog" aria-modal="true" aria-labelledby="vTitle"><canvas id="confetti" aria-hidden="true"></canvas><div class="vbox">
 <button class="vclose" id="vClose" aria-label="Close">✖</button>
 <svg class="vart" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 6 L94 84 L6 84Z" fill="#ffe66d" stroke="#c99a12" stroke-width="3"/><path d="M28 45 L72 45 L50 84Z" fill="#4a3a0c"/><g transform="rotate(-20 50 55)"><rect x="47" y="14" width="6" height="58" rx="2" fill="#e8f0ff" stroke="#9fb5d9"/><path d="M47 14 L50 6 L53 14Z" fill="#e8f0ff"/><rect x="36" y="70" width="28" height="6" rx="3" fill="#c49bff"/><rect x="47" y="76" width="6" height="14" rx="2" fill="#2fa873"/><circle cx="50" cy="73" r="3" fill="#ff5d7a"/></g></svg>
@@ -407,7 +422,7 @@ try { if(navigator.storage && navigator.storage.persist) navigator.storage.persi
 window.KZX = {init: init, encode: encode, decode: decode, payload: payload, apply: apply, describe: describe, fnv: fnv, hasProgress: hasProgress, standalone: standalone};
 })();
 
-var SITE_VERSION = "2026.10.14-2", CHANGELOG = [{"version": "2026.10.14-2", "date": "2026-10-14", "lines": ["🎨 New hand-drawn art for every game and item. Items glow when you find them!", "▶️ Games you haven't started now say \"Start playing\" on the home page.", "📋 Grown-ups: copying and pasting the progress code works better on iPhone (big Copy and Paste buttons)."]}, {"version": "2026.10.14-1", "date": "2026-10-14", "lines": ["🎵 New: an Ocarina of Time tracker, ready for the Switch 2 launch on Nov 5!", "🏆 Beat a game to see a big victory screen, and finished chapters now fold away neatly.", "📦 Grown-ups: move or back up progress between Safari and the Home Screen app (Grown-up tools)."]}];
+var SITE_VERSION = "2026.10.14-2", CHANGELOG = [{"version": "2026.10.14-2", "date": "2026-10-14", "lines": ["🎨 New hand-drawn art for every game and item. Items glow when you find them!", "▶️ Games you haven't started now say \"Start playing\" on the home page.", "📋 Grown-ups: copying and pasting the progress code works better on iPhone (big Copy and Paste buttons).", "📱 Fits the iPhone Home Screen app better: nothing hides under the clock, and the Next button is smaller."]}, {"version": "2026.10.14-1", "date": "2026-10-14", "lines": ["🎵 New: an Ocarina of Time tracker, ready for the Switch 2 launch on Nov 5!", "🏆 Beat a game to see a big victory screen, and finished chapters now fold away neatly.", "📦 Grown-ups: move or back up progress between Safari and the Home Screen app (Grown-up tools)."]}];
 (function(){
 var SEEN = "katieZelda.seenVersion";
 function cmp(a, b){ a = String(a || "0").split(/[.-]/).map(Number); b = String(b || "0").split(/[.-]/).map(Number); for(var i = 0; i < Math.max(a.length, b.length); i++){ var d = (a[i] || 0) - (b[i] || 0); if(d) return d > 0 ? 1 : -1; } return 0; }
