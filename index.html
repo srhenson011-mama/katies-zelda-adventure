@@ -188,7 +188,6 @@ function render(){
     hd.addEventListener("keydown", function(e){ if(e.key === "Enter" || e.key === " "){ e.preventDefault(); tog(); } });
     c.appendChild(hd);
     var body = el("div", "cbody");
-    var hr = el("div", "helprow"); var a = el("a", "help", "🆘 Need Help?"); a.href = ch.url; a.target = "_blank"; a.rel = "noopener"; hr.appendChild(a); body.appendChild(hr);
     var num = 0;
     ch.sections.forEach(function(se){
       var box = el("div", "sec" + (se.opt ? " opt" : "")); box.id = "sec-" + ch.id + "-" + se.id;
