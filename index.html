@@ -65,6 +65,7 @@ h3 span{font-size:15px;white-space:nowrap;color:var(--glow)}
 .seclock{display:none;margin:0 8px 8px;font-weight:bold;color:var(--fairy)}
 .sec.locked .seclock{display:block}
 .sechelprow{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;margin:0 4px 8px}
+.sec.complete .here{display:none}
 .sechelp,.here{min-height:48px;font-size:16px;padding:10px 14px}
 ol{list-style:none;margin:0;padding:0}
 li{margin:7px 0}
@@ -286,7 +287,7 @@ function update(celebrate){
   var ub = document.getElementById("unlockBtn");
   ub.textContent = unlockAll ? "🔓 Grown-up: unlocked (tap to lock again)" : "🔒 Grown-up: unlock all";
   ub.classList.toggle("active", unlockAll);
-  updateGear();
+  updateGear(); updatePicker(S);
   prev = S;
 }
 function jumpNext(){
@@ -401,11 +402,22 @@ function showChecklist(opts, target){
   document.getElementById("mSave").onclick = function(){ close(true); };
   document.getElementById("mSkip").onclick = function(){ close(false); };
 }
+function updatePicker(S){
+  var cur = null, p = document.getElementById("herePick");
+  DATA.forEach(function(ch){ ch.sections.forEach(function(se){
+    var ss = S.sec[ch.id + "-" + se.id];
+    if(!se._opt) return;
+    se._opt.textContent = (ss.complete ? "✅ " : "") + se._opt._t + (!cur && !se.opt && !ss.complete ? "  ← you are here" : "");
+    if(!cur && !se.opt && !ss.complete) cur = ch.id + "|" + se.id;
+  }); });
+  if(cur) p.value = cur;
+  p.dataset.current = cur || "";
+}
 function fillPicker(){
   var p = document.getElementById("herePick");
   DATA.forEach(function(ch){
     var g = document.createElement("optgroup"); g.label = "Chapter " + ch._num + ": " + ch.name;
-    ch.sections.forEach(function(se){ var o = document.createElement("option"); o.value = ch.id + "|" + se.id; o.textContent = se.title + (se.opt ? " ⭐" : ""); g.appendChild(o); });
+    ch.sections.forEach(function(se){ var o = document.createElement("option"); o.value = ch.id + "|" + se.id; o.textContent = se.title + (se.opt ? " ⭐" : ""); se._opt = o; o._t = o.textContent; g.appendChild(o); });
     p.appendChild(g);
   });
 }
