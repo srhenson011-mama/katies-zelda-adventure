@@ -184,6 +184,25 @@ label.step input:checked{animation:pop .35s ease-out}
 .youhere.won{background:radial-gradient(circle at 50% 0,#ffe66d55,transparent 60%),linear-gradient(135deg,#4a3a0c,#2a2440);border-color:var(--glow)}
 @media (max-width:560px){#toast{font-size:16px;padding:10px 14px;max-width:80vw}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.spark{display:none}}
+
+.donerow{display:flex;align-items:center;gap:10px;margin:18px 0;padding:14px 16px;min-height:56px;border-radius:var(--radius);background:linear-gradient(90deg,#1f6b4a,#2a5a3f);border:2px solid var(--glow);box-shadow:0 0 16px #ffe66d44;color:#fff;font-weight:bold;font-size:19px;cursor:pointer}
+.donerow[hidden]{display:none}.donerow .dr-t{flex:1}.donerow .dr-a{color:var(--glow);font-size:15px;white-space:nowrap}
+.chap.grouped{display:none}
+.sec.complete:not(.peek) .sechelprow{display:none}
+.vicbtn{display:block;width:calc(100% - 32px);margin:10px 0 4px;font-size:20px;min-height:58px;background:linear-gradient(180deg,#fff3a3,#e8b923);color:#3a2a00}
+.vicbtn[hidden]{display:none}
+#victory{position:fixed;inset:0;z-index:40;display:none;align-items:center;justify-content:center;padding:14px;background:radial-gradient(circle at 50% 30%,#4a3a0ccc,#0d1f17f2 70%)}
+#victory.show{display:flex}
+#confetti{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.vbox{position:relative;max-width:520px;width:100%;max-height:94vh;overflow:auto;text-align:center;padding:22px 18px;border-radius:28px;background:linear-gradient(160deg,#4a3a0c,#2a2440);border:3px solid var(--glow);box-shadow:0 0 40px #ffe66d99}
+.vbox h2{font-size:clamp(28px,8vw,40px);color:var(--glow);margin:6px 0;text-shadow:0 0 14px #ffe66d88}
+.vart{width:150px;height:150px;filter:drop-shadow(0 0 16px #ffe66d)}
+.vstats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+.vstat{background:#0b1712;border:2px solid #ffe66d66;border-radius:16px;padding:10px 4px;font-size:15px}.vstat b{display:block;font-size:26px;color:#fff}
+.vbtns{display:flex;flex-direction:column;gap:10px;align-items:stretch}
+.vhome{display:flex;align-items:center;justify-content:center;border-radius:18px;text-decoration:none;font-weight:bold;box-shadow:0 4px 0 #0007;font-size:21px;min-height:60px;background:linear-gradient(180deg,#b9ffd9,var(--leaf));color:#0c2a1c}
+.vclose{position:absolute;top:10px;right:10px;min-height:48px;min-width:48px;padding:6px 12px;background:#d8ccff;font-size:20px}
+@media (prefers-reduced-motion:reduce){#confetti{display:none}}
 </style>
 </head>
 <body>
@@ -201,6 +220,7 @@ label.step input:checked{animation:pop .35s ease-out}
 <div class="yh-steps" id="yhSteps"></div></div>
 <button class="jump bigjump" id="jumpBtn">▶️ Go to my next step</button>
 <div class="nextup" id="nextUp"></div>
+<button class="jump vicbtn" id="vicBtn" hidden>🏆 See my victory</button>
 <div class="stats" id="stats"></div>
 <div class="legend">
 <span class="badge b-HP">💗 Heart Piece</span><span class="badge b-HC">❤️ Heart Container</span><span class="badge b-KS">💎 Kinstone</span><span class="badge b-KS ks-gold">✨ Fusion</span><span class="badge b-TR">🎁 Treasure</span>
@@ -229,10 +249,19 @@ label.step input:checked{animation:pop .35s ease-out}
 <div class="tsec danger"><h3 class="th">⚠️ Start over</h3><p class="tdesc">Erases ALL ticks. It asks twice first and can't be undone.</p>
 <div class="tools"><button class="reset" id="resetBtn">🔄 Start over</button></div></div>
 </details>
+<div class="donerow" id="doneRow" role="button" tabindex="0" aria-expanded="false" hidden><span class="dr-t" id="doneTxt"></span><span class="dr-a" id="doneTap"></span></div>
 <main id="chapters"></main>
 <footer>Steps based on the Zelda Dungeon Minish Cap walkthrough. Your checks are saved on this device.</footer>
 </div>
 <button class="jump fab" id="jumpFab" aria-label="Jump to my next step">👉 Next</button>
+<div id="victory" role="dialog" aria-modal="true" aria-labelledby="vTitle"><canvas id="confetti" aria-hidden="true"></canvas><div class="vbox">
+<button class="vclose" id="vClose" aria-label="Close">✖</button>
+<svg class="vart" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 6 L94 84 L6 84Z" fill="#ffe66d" stroke="#c99a12" stroke-width="3"/><path d="M28 45 L72 45 L50 84Z" fill="#4a3a0c"/><g transform="rotate(-20 50 55)"><rect x="47" y="14" width="6" height="58" rx="2" fill="#e8f0ff" stroke="#9fb5d9"/><path d="M47 14 L50 6 L53 14Z" fill="#e8f0ff"/><rect x="36" y="70" width="28" height="6" rx="3" fill="#c49bff"/><rect x="47" y="76" width="6" height="14" rx="2" fill="#2fa873"/><circle cx="50" cy="73" r="3" fill="#ff5d7a"/></g></svg>
+<h2 id="vTitle">You beat Minish Cap, Katie!</h2>
+<p>Vaati is beaten and Princess Zelda is saved with the Four Sword! 🎉</p>
+<div class="vstats"><div class="vstat"><b id="vHearts">0</b>❤️ hearts</div><div class="vstat"><b id="vHp">0</b>💗 Heart Pieces</div><div class="vstat"><b id="vKs">0</b>💎 Kinstones</div></div>
+<div class="vbtns"><a class="jump vhome" id="vHome" href="../">🏠 Back to my adventures</a><button class="ghost" id="vStay">📖 Stay on my tracker</button></div>
+</div></div>
 <div id="toast" role="status" aria-live="polite"></div>
 <div id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle"><div class="box"><h2 id="mTitle">🎒 What does she already have?</h2><div class="sub">These are bonus treasures from before this point. Tick only the ones she already has.</div><div id="mlist"></div><div class="mbtns"><button class="ghost" id="mSkip">Skip</button><button class="jump" id="mSave">✅ Save</button></div></div></div>
 <script>
@@ -366,6 +395,7 @@ function update(celebrate){
     if(celebrate && fin && prev && !ch._wasDone) toast("🎉 Yay Katie! " + ch.name + " is all done!");
     ch._wasDone = fin;
   });
+  updateGroup(S);
   setBar(document.querySelector("#allbar"), allD, all);
   var s = document.getElementById("stats"); s.textContent = "";
   var kg = [0,0], kf = [0,0];
@@ -385,6 +415,8 @@ function update(celebrate){
   document.querySelectorAll(".sec.current").forEach(function(x){ x.classList.remove("current"); });
   if(cur) cur.se._box.classList.add("current");
   document.querySelector(".youhere").classList.toggle("won", !cur);
+  document.getElementById("vicBtn").hidden = !!cur;
+  if(!cur && !load(VKEY, false)){ save(VKEY, true); showVictory(); }
   document.getElementById("yhIco").textContent = cur ? cur.ch.icon : "🏆";
   document.getElementById("yhCh").textContent = cur ? "Chapter " + cur.ch._num + ": " + cur.ch.name : "All done!";
   document.getElementById("yhSe").textContent = cur ? cur.se.title : "You beat the game! 🎉";
@@ -402,6 +434,7 @@ function jumpNext(){
       for(var k = 0; k < se.steps.length; k++){
         var st = se.steps[k];
         if(isNote(st) || done[st[0]]) continue;
+        if(ch._el.classList.contains("grouped")){ peekDone = true; update(false); }
         if(!ch._el.classList.contains("open")){ ch._el.classList.add("open"); open[ch.id] = true; save(OPENKEY, open); }
         var li = document.getElementById("s-" + st[0]);
         li.scrollIntoView({behavior:"smooth", block:"center"});
@@ -463,6 +496,7 @@ function goStep(id){
   for(var i = 0; i < DATA.length; i++){ var ch = DATA[i]; for(var j = 0; j < ch.sections.length; j++){ var se = ch.sections[j];
     if(!se.steps.some(function(s){ return s[0] === id; })) continue;
     if(ch._el.classList.contains("locked") || se._box.classList.contains("locked")){ toast("🔒 " + (se._lock.textContent || ch._lockMsg.textContent)); se._box.scrollIntoView({behavior:"smooth", block:"start"}); if(!ch._el.classList.contains("locked")){ ch._el.classList.add("open"); } return false; }
+    if(ch._el.classList.contains("grouped")){ peekDone = true; update(false); }
     ch._el.classList.add("open"); open[ch.id] = true; save(OPENKEY, open);
     if((se._box.classList.contains("complete") || se._box.classList.contains("bfold")) && !peek[se._key]){ peek[se._key] = 1; update(false); }
     var li = document.getElementById("s-" + id); li.scrollIntoView({behavior:"smooth", block:"center"});
@@ -495,6 +529,47 @@ function initFab(){
 }
 document.addEventListener("DOMContentLoaded", function(){ initFab(); });
 
+
+var VKEY = "katieZeldaMC.victory.v1", peekDone = false;
+function reqDone(ch, S){ return ch.sections.every(function(se){ return se.opt || S.sec[se._key].complete; }); }
+function updateGroup(S){
+  var nums = [];
+  DATA.forEach(function(ch){ var g = reqDone(ch, S); ch._el.classList.toggle("grouped", g && !peekDone); ch._el.dataset.reqdone = g ? "1" : "0"; if(g) nums.push(ch._num); });
+  var row = document.getElementById("doneRow"); row.hidden = !nums.length;
+  if(!nums.length){ peekDone = false; return; }
+  var run = nums.every(function(n, i){ return i === 0 || n === nums[i - 1] + 1; });
+  var label = nums.length === 1 ? "Chapter " + nums[0] : "Chapters " + (run ? nums[0] + "\u2013" + nums[nums.length - 1] : nums.slice(0, -1).join(", ") + " & " + nums[nums.length - 1]);
+  document.getElementById("doneTxt").textContent = "✅ " + label + " done!";
+  document.getElementById("doneTap").textContent = peekDone ? "(tap to fold) ▾" : "(tap to peek) ▸";
+  row.setAttribute("aria-expanded", peekDone ? "true" : "false");
+}
+function confettiBurst(){
+  if(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var c = document.getElementById("confetti"); if(!c.getContext) return; var x = c.getContext("2d"); if(!x) return;
+  var W = c.width = innerWidth, H = c.height = innerHeight, cols = ["#ffe66d","#5fe0a0","#ff8fd0","#c49bff","#7ec8ff","#fff"], P = [];
+  for(var i = 0; i < 160; i++) P.push({x: W / 2, y: H * .35, vx: (Math.random() - .5) * 14, vy: -Math.random() * 14 - 4, s: 5 + Math.random() * 7, r: Math.random() * 6, vr: (Math.random() - .5) * .4, c: cols[i % cols.length]});
+  var t0 = performance.now();
+  (function fr(now){ x.clearRect(0, 0, W, H); P.forEach(function(p){ p.vy += .35; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.r += p.vr; x.save(); x.translate(p.x, p.y); x.rotate(p.r); x.fillStyle = p.c; x.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2); x.restore(); });
+    if(now - t0 < 4000 && document.getElementById("victory").classList.contains("show")) requestAnimationFrame(fr); else x.clearRect(0, 0, W, H); })(t0);
+}
+function showVictory(){
+  var hp = 0, hc = 0, ks = 0, kt = 0;
+  DATA.forEach(function(ch){ ch.sections.forEach(function(se){ se.steps.forEach(function(s){ if(isNote(s)) return; if(s[2] === "KS" && !ksInfo(s).fuse){ kt++; if(done[s[0]]) ks++; } if(!done[s[0]]) return; if(s[2] === "HP") hp++; if(s[2] === "HC") hc++; }); }); });
+  document.getElementById("vHearts").textContent = 3 + hc + Math.floor(hp / 4);
+  document.getElementById("vHp").textContent = hp + "/44";
+  document.getElementById("vKs").textContent = ks + "/" + kt;
+  var v = document.getElementById("victory"); v.classList.add("show"); document.getElementById("vClose").focus(); confettiBurst();
+}
+function hideVictory(){ document.getElementById("victory").classList.remove("show"); }
+document.addEventListener("DOMContentLoaded", function(){
+  document.getElementById("vicBtn").onclick = showVictory;
+  document.getElementById("vClose").onclick = hideVictory; document.getElementById("vStay").onclick = hideVictory;
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape") hideVictory(); });
+  var row = document.getElementById("doneRow");
+  function tg(){ peekDone = !peekDone; update(false); }
+  row.addEventListener("click", tg); row.addEventListener("keydown", function(e){ if(e.key === "Enter" || e.key === " "){ e.preventDefault(); tg(); } });
+});
+
 var PANELKEY = "katieZeldaMC.panels";
 function initPanels(){
   var ps = load(PANELKEY, {}), phone = window.matchMedia && window.matchMedia("(max-width:560px)").matches;
@@ -512,7 +587,7 @@ function saveSummary(S){
     if(se.opt) return; var ss = S.sec[se._key]; rq += ss.n; rd += ss.d;
     if(!cur && !ss.complete) cur = {ch: ch, se: se};
   }); });
-  save(SUMKEY, {pct: Math.round(rd * 100 / Math.max(rq, 1)), done: rd, total: rq, chNum: cur ? cur.ch._num : 0, chapter: cur ? cur.ch.name : "All done!", section: cur ? cur.se.title : "You beat the game!", icon: cur ? cur.ch.icon : "🏆", hearts: 3 + hc + Math.floor(hp / 4), hp: hp, hc: hc, t: Date.now()});
+  save(SUMKEY, {pct: rd >= rq ? 100 : Math.min(99, Math.round(rd * 100 / Math.max(rq, 1))), complete: rd >= rq, done: rd, total: rq, chNum: cur ? cur.ch._num : 0, chapter: cur ? cur.ch.name : "All done!", section: cur ? cur.se.title : "You beat the game!", icon: cur ? cur.ch.icon : "🏆", hearts: 3 + hc + Math.floor(hp / 4), hp: hp, hc: hc, t: Date.now()});
 }
 var PRESET = /Big Wallet|Big Bomb Bag|Bottle #1|Empty Bottle #2|Pegasus Boots|White Sword|Earth Element|Fire Element/;
 function startHere(chId, secId, quiet){
@@ -596,7 +671,7 @@ document.addEventListener("DOMContentLoaded", function(){
   };
   document.getElementById("resetBtn").onclick = function(){
     if(confirm("Start over? This erases ALL your check marks!") && confirm("Are you really, really sure?")){
-      done = {}; save(KEY, done); peek = {};
+      done = {}; save(KEY, done); peek = {}; peekDone = false; save(VKEY, false);
       document.querySelectorAll("label.step input").forEach(function(cb){ cb.checked = false; cb.parentNode.classList.remove("on"); });
       update(false); toast("🔄 Fresh start! Let's go!");
     }
