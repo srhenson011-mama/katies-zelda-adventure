@@ -3,6 +3,10 @@
 <head>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%F0%9F%A7%9A%3C/text%3E%3C/svg%3E">
 <meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0d1f17">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -285,6 +289,7 @@ function encode(p){
   if(canZip()) return pipe(raw, CompressionStream, "deflate-raw").then(function(z){ return PFX + "z." + b64(z); }).catch(function(){ return PFX + "j." + b64(raw); });
   return Promise.resolve(PFX + "j." + b64(raw));
 }
+function encodeSync(p){ return PFX + "j." + b64(new TextEncoder().encode(JSON.stringify(p))); }
 function decode(code){
   code = String(code || "").trim();
   return new Promise(function(res){
@@ -328,14 +333,14 @@ function apply(p, mode){
 }
 function hasProgress(){ return GAMES.some(function(g){ var d = J(localStorage.getItem(g[0] + ".v1"), {}); return Object.keys(d).length > 0; }); }
 function standalone(){ return !!((window.matchMedia && matchMedia("(display-mode: standalone)").matches) || navigator.standalone); }
-var CSS = ".xfer{margin-top:14px;padding:14px;border-radius:18px;background:#0b1a2b;border:2px solid #7ec8ff;color:#f4f1ff}.xfer h3{margin:0 0 6px;font-size:19px;color:#bfe9ff;background:none;padding:0;display:block}.xfer p,.xfer li{font-size:15px;color:#d6e6f5}.xfer ol{list-style:decimal;padding-left:22px;margin:6px 0 10px}.xfer ol li{margin:4px 0}.xfer textarea{width:100%;min-height:84px;font:13px/1.3 ui-monospace,monospace;border-radius:12px;border:2px solid #3e6b57;background:#071018;color:#e8fff3;padding:8px;word-break:break-all}.xfer .xrow{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}.xfer button,.xfer label.xfile{font:inherit;font-weight:bold;border:none;border-radius:16px;padding:10px 14px;min-height:48px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 4px 0 #0007;color:#14231c;background:#bfe9ff;flex:1 1 44%}.xfer .xbig{background:linear-gradient(180deg,#fff3a3,#ffe66d);font-size:19px;flex-basis:100%}.xfer label.xfile input{position:absolute;opacity:0;width:1px;height:1px}.xfer .xmsg{font-weight:bold;margin:6px 0;min-height:1em}.xfer .xmsg.bad{color:#ffb0b9}.xfer .xmsg.good{color:#a9f5c8}.xfer .xprev{display:none;padding:10px;border-radius:14px;background:#13263a;border:2px dashed #ffe66d;margin-top:8px}.xfer .xprev.show{display:block}.xfer .xmerge{background:#a9f5c8}.xfer .xrepl{background:#ffb0b9}.xfer .xsub{font-size:17px;color:#ffe66d;margin:12px 0 4px}";
+var CSS = ".xfer{margin-top:14px;padding:14px;border-radius:18px;background:#0b1a2b;border:2px solid #7ec8ff;color:#f4f1ff}.xfer h3{margin:0 0 6px;font-size:19px;color:#bfe9ff;background:none;padding:0;display:block}.xfer p,.xfer li{font-size:15px;color:#d6e6f5}.xfer ol{list-style:decimal;padding-left:22px;margin:6px 0 10px}.xfer ol li{margin:4px 0}.xfer textarea{width:100%;min-height:84px;font:16px/1.3 ui-monospace,monospace;-webkit-user-select:text;user-select:text;border-radius:12px;border:2px solid #3e6b57;background:#071018;color:#e8fff3;padding:8px;word-break:break-all}.xfer .xrow{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}.xfer button,.xfer label.xfile{font:inherit;font-weight:bold;border:none;border-radius:16px;padding:10px 14px;min-height:48px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 4px 0 #0007;color:#14231c;background:#bfe9ff;flex:1 1 44%}.xfer .xbig{background:linear-gradient(180deg,#fff3a3,#ffe66d);font-size:19px;flex-basis:100%}.xfer label.xfile input{position:absolute;opacity:0;width:1px;height:1px}.xfer .xmsg{font-weight:bold;margin:6px 0;min-height:1em}.xfer .xmsg.bad{color:#ffb0b9}.xfer .xmsg.good{color:#a9f5c8}.xfer .xprev{display:none;padding:10px;border-radius:14px;background:#13263a;border:2px dashed #ffe66d;margin-top:8px}.xfer .xprev.show{display:block}.xfer .xcopy{background:linear-gradient(180deg,#b9ffd9,#5fe0a0);flex-basis:100%;font-size:19px}.xfer .xcopy.done{background:#a9f5c8}.xfer .xmerge{background:#a9f5c8}.xfer .xrepl{background:#ffb0b9}.xfer .xsub{font-size:17px;color:#ffe66d;margin:12px 0 4px}";
 function html(){
   return '<div class="xfer" id="xfer"><h3>📦 Move or back up my progress</h3>' +
   '<p>On iPhone, a site added to the Home Screen keeps its own separate storage, so it starts empty. Move your ticks over like this:</p>' +
   '<ol><li>In <b>Safari</b>: open this site, Grown-up tools → tap <b>📋 Copy my progress code</b>.</li><li>Open the <b>Home Screen app</b> → Grown-up tools → 📦 Move or back up.</li><li><b>Paste</b> the code in the box below and tap <b>📥 Load</b>, then choose Merge.</li></ol>' +
   '<div class="xsub">⬆️ Save / send my progress</div><div class="xrow"><button type="button" class="xbig" id="xCopy">📋 Copy my progress code</button><button type="button" id="xDown">💾 Download backup file</button><button type="button" id="xShare" hidden>📤 Share</button></div>' +
-  '<textarea id="xOut" readonly aria-label="My progress code" placeholder="Your code will show here" hidden></textarea>' +
-  '<div class="xsub">⬇️ Bring progress here</div><textarea id="xIn" aria-label="Paste progress code" placeholder="Paste progress code here"></textarea>' +
+  '<textarea id="xOut" readonly aria-label="My progress code" placeholder="Your code will show here"></textarea><div class="xrow"><button type="button" class="xbig xcopy" id="xCopy2">📋 Copy code</button></div>' +
+  '<div class="xsub">⬇️ Bring progress here</div><textarea id="xIn" aria-label="Paste progress code" placeholder="Paste progress code here"></textarea><div class="xrow"><button type="button" class="xcopy" id="xPaste">📋 Paste from clipboard</button></div>' +
   '<div class="xrow"><button type="button" class="xbig" id="xLoad">📥 Load</button><label class="xfile">📂 Load from backup file<input type="file" id="xFile" accept=".json,application/json,text/plain"></label></div>' +
   '<div class="xmsg" id="xMsg" role="status" aria-live="polite"></div>' +
   '<div class="xprev" id="xPrev"><div id="xPrevTxt"></div><div class="xrow"><button type="button" class="xmerge" id="xMerge">➕ Merge (keep all ticks)</button><button type="button" class="xrepl" id="xRepl">♻️ Replace everything</button><button type="button" id="xCancel">✖ Cancel</button></div></div></div>';
@@ -347,15 +352,32 @@ function init(host, onApplied){
   var $ = function(i){ return document.getElementById(i); }, pending = null;
   function msg(t, cls){ var m = $("xMsg"); m.textContent = t; m.className = "xmsg " + (cls || ""); }
   function makeCode(){ return encode(payload()).then(function(c){ var o = $("xOut"); o.value = c; o.hidden = false; return c; }); }
-  $("xCopy").onclick = function(){ makeCode().then(function(c){
-    function fallback(){ var o = $("xOut"); o.focus(); o.select(); var ok = false; try { ok = document.execCommand("copy"); } catch(e){} msg(ok ? "✅ Copied! Now open the Home Screen app and paste it." : "👆 Select the code above and copy it.", ok ? "good" : ""); }
-    if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(c).then(function(){ msg("✅ Copied! Now open the Home Screen app and paste it.", "good"); }, fallback); else fallback();
-  }); };
+  var CODE = "", CODED = "";
+  function fresh(){ var p = payload(), key = JSON.stringify(p.d); if(key !== CODED){ CODED = key; CODE = encodeSync(p); $("xOut").value = CODE; encode(p).then(function(c){ if(CODED === key){ CODE = c; $("xOut").value = c; } }); } return CODE; }
+  fresh();
+  ["focusin", "pointerdown", "touchstart"].forEach(function(ev){ host.addEventListener(ev, fresh, {passive: true}); });
+  window.addEventListener("storage", fresh); document.addEventListener("visibilitychange", fresh);
+  function selectAll(){ var o = $("xOut"); o.focus(); try { o.setSelectionRange(0, o.value.length); } catch(e){} o.select && o.select(); }
+  $("xOut").addEventListener("click", selectAll); $("xOut").addEventListener("focus", function(){ setTimeout(selectAll, 0); });
+  function done(btn, ok){ var t = btn.dataset.t || (btn.dataset.t = btn.textContent); btn.textContent = ok ? "✅ Copied!" : "👆 Code selected: tap Copy"; btn.classList.toggle("done", ok); clearTimeout(btn._h); btn._h = setTimeout(function(){ btn.textContent = t; btn.classList.remove("done"); }, 2500);
+    msg(ok ? "✅ Copied! Now open the Home Screen app and paste it." : "👆 The code is selected. Tap Copy in the menu that pops up.", ok ? "good" : ""); }
+  function legacy(){ var o = $("xOut"), ro = o.readOnly; o.readOnly = false; selectAll(); var ok = false; try { ok = document.execCommand("copy"); } catch(e){} o.readOnly = ro; try { o.setSelectionRange(0, o.value.length); } catch(e){} return ok; }
+  function copy(){ var btn = this, c = fresh();
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      var pr; try { pr = navigator.clipboard.writeText(c); } catch(e){ pr = Promise.reject(e); }
+      pr.then(function(){ done(btn, true); }, function(){ done(btn, legacy()); });
+    } else done(btn, legacy());
+  }
+  $("xCopy").onclick = copy; $("xCopy2").onclick = copy;
+  $("xPaste").onclick = function(){ var btn = this, t = btn.textContent;
+    function manual(){ var i = $("xIn"); i.focus(); msg("👆 Press and hold in the box, then tap Paste.", ""); }
+    if(navigator.clipboard && navigator.clipboard.readText){ navigator.clipboard.readText().then(function(x){ if(!x){ manual(); return; } $("xIn").value = x; btn.textContent = "✅ Pasted!"; setTimeout(function(){ btn.textContent = t; }, 2000); msg("Now tap 📥 Load.", "good"); }, manual); } else manual(); };
+  function makeCode(){ return Promise.resolve(fresh()); }
   $("xDown").onclick = function(){ var p = payload(), b = new Blob([JSON.stringify(p, null, 1)], {type: "application/json"}), a = document.createElement("a");
     a.href = URL.createObjectURL(b); a.download = "katie-zelda-backup-" + new Date().toISOString().slice(0, 10) + ".json"; document.body.appendChild(a); a.click(); a.remove(); msg("💾 Backup file saved.", "good"); };
   if(navigator.share){ $("xShare").hidden = false; $("xShare").onclick = function(){ makeCode().then(function(c){ navigator.share({title: "Katie's Zelda progress", text: c}).catch(function(){}); }); }; }
   function preview(p){ pending = p; $("xPrevTxt").textContent = "This code has: " + describe(p.d) + ". Saved " + new Date(p.t).toLocaleString() + ". Right now this device has: " + describe(keys()) + "."; $("xPrev").classList.add("show"); msg(""); }
-  function bad(e){ pending = null; $("xPrev").classList.remove("show"); msg("⚠️ " + (e && e.message || "That code didn't work."), "bad"); }
+  function bad(e){ pending = null; $("xPrev").classList.remove("show"); msg("⚠️ " + (e && e.message && !/JSON|token|position|atob|decode|character/i.test(e.message) ? e.message : "The code is damaged or cut off. Copy it again."), "bad"); }
   $("xLoad").onclick = function(){ decode($("xIn").value).then(preview, bad); };
   $("xFile").onchange = function(){ var f = this.files && this.files[0]; if(!f) return; var r = new FileReader(); r.onload = function(){ decode(r.result).then(preview, bad); }; r.readAsText(f); };
   function go(mode){ if(!pending) return; apply(pending, mode); pending = null; $("xPrev").classList.remove("show"); msg("🎉 Progress loaded!", "good"); if(onApplied) onApplied(mode); }
@@ -363,6 +385,46 @@ function init(host, onApplied){
 }
 try { if(navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(function(){}); } catch(e){}
 window.KZX = {init: init, encode: encode, decode: decode, payload: payload, apply: apply, describe: describe, fnv: fnv, hasProgress: hasProgress, standalone: standalone};
+})();
+
+var SITE_VERSION = "2026.10.14-1", CHANGELOG = [{"version": "2026.10.14-1", "date": "2026-10-14", "lines": ["🎵 New: an Ocarina of Time tracker, ready for the Switch 2 launch on Nov 5!", "🏆 Beat a game to see a big victory screen, and finished chapters now fold away neatly.", "📦 Grown-ups: move or back up progress between Safari and the Home Screen app (Grown-up tools)."]}];
+(function(){
+var SEEN = "katieZelda.seenVersion";
+function cmp(a, b){ a = String(a || "0").split(/[.-]/).map(Number); b = String(b || "0").split(/[.-]/).map(Number); for(var i = 0; i < Math.max(a.length, b.length); i++){ var d = (a[i] || 0) - (b[i] || 0); if(d) return d > 0 ? 1 : -1; } return 0; }
+function visited(){ for(var i = 0; i < localStorage.length; i++){ var k = localStorage.key(i); if(/^katie/.test(k) && k !== SEEN) return true; } return false; }
+var CSS = "#wnCard{position:fixed;left:50%;top:12px;transform:translateX(-50%);z-index:50;width:min(520px,calc(100% - 20px));max-height:80vh;overflow:auto;padding:16px 16px 12px;border-radius:22px;background:linear-gradient(160deg,#3b2b6b,#1f4a3a);border:3px solid #ffe66d;box-shadow:0 0 26px #ffe66d88,0 10px 30px #000a;color:#fff;font-size:17px}#wnCard[hidden]{display:none}#wnCard h2{margin:0 0 6px;font-size:22px;color:#ffe66d}#wnCard h4{margin:10px 0 2px;font-size:14px;color:#c9d8cf}#wnCard ul{margin:4px 0;padding-left:20px}#wnCard li{margin:4px 0;line-height:1.35}#wnCard .wnb{display:flex;justify-content:flex-end;margin-top:10px}#wnCard button,#wnUpd,.wnlink{font:inherit;font-weight:bold;border:none;border-radius:16px;padding:10px 16px;min-height:48px;cursor:pointer;box-shadow:0 4px 0 #0007;background:linear-gradient(180deg,#fff3a3,#ffe66d);color:#3a2a00}#wnUpd{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:49;background:linear-gradient(90deg,#a9f5c8,#5fe0a0);color:#0c2a1c;font-size:18px;max-width:calc(100% - 20px)}#wnUpd[hidden]{display:none}.wnrow{margin:12px 0 4px}.wnlink{background:#d8ccff;color:#14231c}";
+function el(t, c, x){ var e = document.createElement(t); if(c) e.className = c; if(x != null) e.textContent = x; return e; }
+function show(list, title){
+  var c = document.getElementById("wnCard"); c.textContent = "";
+  c.appendChild(el("h2", null, title));
+  list.forEach(function(v){ c.appendChild(el("h4", null, "Update " + v.version + " · " + v.date)); var u = el("ul"); v.lines.forEach(function(l){ u.appendChild(el("li", null, l)); }); c.appendChild(u); });
+  var b = el("div", "wnb"), ok = el("button", null, "👍 Got it!"); ok.type = "button"; ok.id = "wnOk";
+  ok.onclick = function(){ try { localStorage.setItem(SEEN, SITE_VERSION); } catch(e){} c.hidden = true; };
+  b.appendChild(ok); c.appendChild(b); c.hidden = false; ok.focus();
+}
+function versionUrl(){ var h = document.getElementById("homeLink"); return new URL("version.json", h ? h.href : location.href).href; }
+var last = 0;
+function check(force){
+  if(!force && Date.now() - last < 30000) return Promise.resolve(null); last = Date.now();
+  if(!window.fetch) return Promise.resolve(null);
+  return fetch(versionUrl() + "?t=" + Date.now(), {cache: "no-store"}).then(function(r){ return r.ok ? r.json() : null; }).then(function(j){
+    var newer = j && j.version && cmp(j.version, SITE_VERSION) > 0; document.getElementById("wnUpd").hidden = !newer; return j;
+  }).catch(function(){ return null; });
+}
+function init(){
+  var st = document.createElement("style"); st.textContent = CSS; document.head.appendChild(st);
+  var card = el("div"); card.id = "wnCard"; card.hidden = true; card.setAttribute("role", "dialog"); card.setAttribute("aria-label", "What's new"); document.body.appendChild(card);
+  var up = el("button", null, "🔄 A new version is ready! Tap to refresh"); up.id = "wnUpd"; up.type = "button"; up.hidden = true; up.onclick = function(){ location.reload(); }; document.body.appendChild(up);
+  var tools = document.getElementById("p-tools") || document.getElementById("h-tools");
+  if(tools){ var row = el("div", "wnrow"), a = el("button", "wnlink", "📝 What's new"); a.type = "button"; a.id = "wnLink"; a.onclick = function(){ show(CHANGELOG, "📝 What's new"); }; row.appendChild(a); var host = document.getElementById("xferHost"); if(host) host.parentNode.insertBefore(row, host); else tools.appendChild(row); }
+  var seen = null; try { seen = localStorage.getItem(SEEN); } catch(e){}
+  if(!seen && !visited()){ try { localStorage.setItem(SEEN, SITE_VERSION); } catch(e){} }
+  else if(cmp(SITE_VERSION, seen) > 0){ var news = CHANGELOG.filter(function(v){ return cmp(v.version, seen) > 0; }); if(news.length) show(news, "✨ New update! See what's new"); else try { localStorage.setItem(SEEN, SITE_VERSION); } catch(e){} }
+  document.addEventListener("visibilitychange", function(){ if(document.visibilityState === "visible") check(); });
+  window.addEventListener("focus", function(){ check(); });
+}
+window.KZW = {init: init, check: check, cmp: cmp, show: show};
+if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();
 </script>
 <script>
