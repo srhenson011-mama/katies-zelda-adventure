@@ -90,6 +90,21 @@ label.step.on .hint{display:none}
 li.note .notebox{background:#ffe66d14;border:2px dashed #ffe66d66;border-radius:12px;padding:8px 12px;font-size:16px;color:#fff3c4}
 li.flash label{animation:fl 1.2s 2}
 @keyframes fl{50%{background:#ffe66d44;box-shadow:0 0 0 4px var(--glow)}}
+details.fp{padding:0;overflow:hidden}
+details.fp>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:14px 16px;min-height:56px;border-radius:22px}
+details.fp>summary::-webkit-details-marker{display:none}
+details.fp>summary::after{content:"▾";margin-left:auto;font-size:22px;color:var(--glow);transition:transform .2s}
+details.fp:not([open])>summary::after{transform:rotate(-90deg)}
+details.fp>summary .ptitle{margin:0}
+details.fp>:not(summary){margin-left:16px;margin-right:16px}
+details.fp[open]{padding-bottom:16px}
+.psum{font-weight:bold;font-size:16px;background:#0b1712;border:1px solid #3e6b57;border-radius:999px;padding:4px 12px;color:#fff3c4}
+.kscols{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media (max-width:560px){.kscols{grid-template-columns:1fr}}
+.ksh{font-size:17px;margin:10px 0 6px;color:var(--glow)}
+.kslist{list-style:none;margin:0;padding:0;max-height:320px;overflow:auto}
+.kslist li{margin:6px 0;padding:8px 10px;border-radius:14px;background:#0b1712;border:1px solid #2f5a48}
+.kslink{color:#bfe9ff;font-weight:bold;text-decoration:none;display:flex;align-items:center;min-height:44px}
+.kswhere{display:block;font-size:13px;color:#9fb5a9}
 .ptitle{font-size:22px;margin:4px 0 10px;color:var(--glow);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .hearts{display:flex;flex-wrap:wrap;gap:4px;align-items:center;font-size:28px}
 .heart{filter:drop-shadow(0 0 6px #ff5d7a)}
@@ -126,8 +141,20 @@ footer{text-align:center;font-size:14px;color:#9fb5a9;margin-top:20px}
 <div class="sub">The Minish Cap quest tracker. Tick a box each time you do a step!</div>
 </header>
 <div class="wrap">
-<section class="overall panel">
-<div style="font-weight:bold;margin-bottom:6px">🌟 Whole adventure</div>
+<details class="fp panel" id="p-hearts" open><summary><span class="ptitle">❤️ Hearts</span><span class="psum" id="sum-hearts"></span></summary>
+<div id="hearts" class="hearts"></div>
+<div class="hpline"><span id="hpMeter" class="hpmeter" aria-label="Heart piece meter"></span><span id="hpCounts" class="pill"></span></div>
+</details>
+<details class="fp panel" id="p-items" open><summary><span class="ptitle">🎒 Items</span><span class="psum" id="sum-items"></span></summary>
+<div><span id="itemCounts" class="pill"></span></div>
+<div id="items" class="items"></div>
+</details>
+<details class="fp panel" id="p-ks" open><summary><span class="ptitle">💎 Kinstones</span><span class="psum" id="sum-ks"></span></summary>
+<div id="ksStats" class="stats"></div>
+<div class="kscols"><div><h3 class="ksh">⏳ Still to do</h3><ul id="ksTodo" class="kslist"></ul></div><div><h3 class="ksh">✅ Done</h3><ul id="ksDone" class="kslist"></ul></div></div>
+</details>
+<details class="fp panel overall" id="p-where" open><summary><span class="ptitle">📍 Where am I?</span><span class="psum" id="sum-where"></span></summary>
+<div style="font-weight:bold;margin:6px 0">🌟 Whole adventure</div>
 <div class="bar" id="allbar"><i></i><span></span></div>
 <div class="stats" id="stats"></div>
 <div class="legend">
@@ -141,14 +168,7 @@ footer{text-align:center;font-size:14px;color:#9fb5a9;margin-top:20px}
 <button class="ghost" id="unlockBtn">🔒 Grown-up: unlock all</button>
 <button class="reset" id="resetBtn">🔄 Start over</button>
 </div>
-</section>
-<section class="panel" id="gear">
-<h2 class="ptitle">❤️ Hearts</h2>
-<div id="hearts" class="hearts"></div>
-<div class="hpline"><span id="hpMeter" class="hpmeter" aria-label="Heart piece meter"></span><span id="hpCounts" class="pill"></span></div>
-<h2 class="ptitle">🎒 Items <span id="itemCounts" class="pill"></span></h2>
-<div id="items" class="items"></div>
-</section>
+</details>
 <main id="chapters"></main>
 <footer>Steps based on the Zelda Dungeon Minish Cap walkthrough. Your checks are saved on this device.</footer>
 </div>
@@ -283,12 +303,18 @@ function update(celebrate){
   var s = document.getElementById("stats"); s.textContent = "";
   var kg = [0,0], kf = [0,0];
   DATA.forEach(function(ch){ ch.sections.forEach(function(se){ se.steps.forEach(function(x){ if(x[2] !== "KS" || isNote(x)) return; var k = ksInfo(x), a = k.fuse ? kf : kg; a[1]++; if(done[x[0]]) a[0]++; }); }); });
-  s.appendChild(el("span", "pill kspill", "💎 Kinstones found: " + kg[0] + "/" + kg[1] + " · ✨ Fusions: " + kf[0] + "/" + kf[1]));
+  var ksS = document.getElementById("ksStats"); ksS.textContent = "";
+  ksS.appendChild(el("span", "pill kspill", "💎 Kinstones found: " + kg[0] + "/" + kg[1] + " · ✨ Fusions: " + kf[0] + "/" + kf[1]));
+  updateKsList();
+  document.getElementById("sum-ks").textContent = "💎 " + kg[0] + "/" + kg[1] + " · ✨ " + kf[0] + "/" + kf[1];
+  document.getElementById("sum-where").textContent = "🌟 " + Math.round(allD * 100 / Math.max(all,1)) + "%";
   [["💗 Heart Pieces","HP"],["❤️ Containers","HC"],["🎁 Treasures","TR"]].forEach(function(x){ s.appendChild(el("span", "pill", x[0] + ": " + got[x[1]][0] + "/" + got[x[1]][1])); });
   var ub = document.getElementById("unlockBtn");
   ub.textContent = unlockAll ? "🔓 Grown-up: unlocked (tap to lock again)" : "🔒 Grown-up: unlock all";
   ub.classList.toggle("active", unlockAll);
   updateGear(); updatePicker(S);
+  var cp = document.getElementById("herePick"), co = cp.options[cp.selectedIndex];
+  if(co && cp.dataset.current) document.getElementById("sum-where").textContent += " · " + co._t;
   prev = S;
 }
 function jumpNext(){
@@ -354,6 +380,41 @@ function updateGear(){
   for(var j = 0; j < 4; j++) M.appendChild(el("span", "qt" + (j < q ? " on" : "")));
   M.title = q + " of 4 pieces toward the next heart";
   document.getElementById("hpCounts").textContent = "💗 Heart Pieces " + hp + "/44 · ❤️ Containers " + hc + "/6 · next heart: " + q + "/4";
+  document.getElementById("sum-hearts").textContent = "❤️ " + max + " hearts · " + q + "/4";
+  document.getElementById("sum-items").textContent = "🎒 have " + hv + " · need " + (total - hv);
+}
+var KSL = null;
+function goStep(id){
+  for(var i = 0; i < DATA.length; i++){ var ch = DATA[i]; for(var j = 0; j < ch.sections.length; j++){ var se = ch.sections[j];
+    if(!se.steps.some(function(s){ return s[0] === id; })) continue;
+    if(ch._el.classList.contains("locked") || se._box.classList.contains("locked")){ toast("🔒 " + (se._lock.textContent || ch._lockMsg.textContent)); se._box.scrollIntoView({behavior:"smooth", block:"start"}); if(!ch._el.classList.contains("locked")){ ch._el.classList.add("open"); } return false; }
+    ch._el.classList.add("open"); open[ch.id] = true; save(OPENKEY, open);
+    if(se._box.classList.contains("complete") && !peek[se._key]){ peek[se._key] = 1; update(false); }
+    var li = document.getElementById("s-" + id); li.scrollIntoView({behavior:"smooth", block:"center"});
+    li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash"); return true;
+  } }
+  return false;
+}
+function updateKsList(){
+  var td = document.getElementById("ksTodo"), dn = document.getElementById("ksDone");
+  if(!KSL){ KSL = [];
+    DATA.forEach(function(ch){ ch.sections.forEach(function(se){ se.steps.forEach(function(x){
+      if(x[2] !== "KS" || isNote(x)) return; var k = ksInfo(x);
+      var li = el("li"), a = el("a", "kslink", (k.fuse ? "✨ " : "💎 ") + x[1].replace(/\s*\[.*$/, "")); a.href = "#s-" + x[0]; a.dataset.id = x[0];
+      a.addEventListener("click", function(e){ e.preventDefault(); goStep(x[0]); });
+      li.appendChild(a); li.appendChild(el("span", "kswhere", "Ch " + ch._num + " · " + se.title + (se.opt ? " ⭐" : "")));
+      KSL.push({id: x[0], li: li});
+    }); }); });
+  }
+  KSL.forEach(function(o){ (done[o.id] ? dn : td).appendChild(o.li); });
+}
+var PANELKEY = "katieZeldaMC.panels";
+function initPanels(){
+  var ps = load(PANELKEY, {}), phone = window.matchMedia && window.matchMedia("(max-width:560px)").matches;
+  document.querySelectorAll("details.fp").forEach(function(d){
+    d.open = (d.id in ps) ? !!ps[d.id] : !phone;
+    d.addEventListener("toggle", function(){ var s = load(PANELKEY, {}); s[d.id] = d.open; save(PANELKEY, s); });
+  });
 }
 var PRESET = /Big Wallet|Big Bomb Bag|Bottle #1|Empty Bottle #2|Pegasus Boots|White Sword|Earth Element|Fire Element/;
 function startHere(chId, secId, quiet){
@@ -424,7 +485,7 @@ function fillPicker(){
 }
 function setAll(v){ DATA.forEach(function(ch){ if(v && ch._el.classList.contains("locked")) return; ch._el.classList.toggle("open", v); open[ch.id] = v; }); save(OPENKEY, open); }
 document.addEventListener("DOMContentLoaded", function(){
-  render(); renderGear(); fillPicker(); update(false);
+  initPanels(); render(); renderGear(); fillPicker(); update(false);
   document.getElementById("hereGo").onclick = function(){ var v = document.getElementById("herePick").value.split("|"); startHere(v[0], v[1]); };
   document.getElementById("jumpBtn").onclick = jumpNext;
   document.getElementById("jumpFab").onclick = jumpNext;
