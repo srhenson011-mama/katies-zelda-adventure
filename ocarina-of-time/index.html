@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%F0%9F%A7%9A%3C/text%3E%3C/svg%3E">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d1f17">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Ocarina of Time">
+<meta name="description" content="Katie's Zelda quest tracker">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+
+<title>Katie's Zelda Adventure ✨ Ocarina of Time</title>
+<style>
+:root{--bg1:#0d1f17;--bg2:#1a1636;--card:#18302a;--card2:#21203f;--ink:#f4f1ff;--soft:#c9d8cf;--leaf:#5fe0a0;--leaf2:#2fa873;--glow:#ffe66d;--fairy:#c49bff;--pink:#ff8fd0;--line:#3e6b57;--radius:22px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:"Comic Sans MS","Chalkboard SE","Baloo 2","Trebuchet MS",system-ui,sans-serif;color:var(--ink);font-size:19px;line-height:1.4;
+background:radial-gradient(ellipse at 20% 0%,#2b5a45 0%,transparent 55%),radial-gradient(ellipse at 90% 30%,#3b2b6b 0%,transparent 50%),linear-gradient(180deg,var(--bg1) 0%,#12261f 45%,var(--bg2) 100%);background-attachment:fixed;min-height:100vh}
+body::before,body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+background-image:radial-gradient(3px 3px at 10% 20%,#fff7a8,transparent),radial-gradient(2px 2px at 30% 70%,#fff7a8,transparent),radial-gradient(3px 3px at 70% 15%,#d9c2ff,transparent),radial-gradient(2px 2px at 85% 60%,#fff7a8,transparent),radial-gradient(2px 2px at 55% 85%,#d9c2ff,transparent),radial-gradient(3px 3px at 45% 40%,#fff7a8,transparent);
+animation:twinkle 4s ease-in-out infinite alternate;opacity:.8}
+body::after{transform:translate(4%,6%) scale(1.1);animation-delay:2s;opacity:.5}
+@keyframes twinkle{0%{opacity:.25}100%{opacity:.9}}
+@media (prefers-reduced-motion:reduce){body::before,body::after{animation:none}}
+header{position:relative;z-index:1;text-align:center;padding:22px 12px 6px}
+.homelink{position:absolute;left:10px;top:10px;display:inline-flex;align-items:center;min-height:44px;padding:8px 14px;border-radius:999px;background:#0f2019;border:2px solid var(--leaf);color:var(--ink);font-weight:bold;font-size:15px;text-decoration:none;box-shadow:0 0 10px #5fe0a066;z-index:3}
+@media (max-width:560px){header{padding-top:62px}}
+.leafy{display:block;margin:0 auto;width:min(420px,90%);height:34px}
+h1{margin:4px 0 0;font-size:clamp(28px,7vw,48px);color:var(--glow);text-shadow:0 0 14px #ffe66d88,0 3px 0 #2a4b3b}
+.sub{font-size:17px;margin:6px 0;color:var(--soft)}
+.wrap{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 12px 130px}
+.panel,.overall{background:linear-gradient(160deg,var(--card),var(--card2));border:2px solid var(--line);border-radius:var(--radius);padding:16px;margin:10px 0 18px;box-shadow:0 0 0 4px #ffffff08,0 10px 30px #0008}
+.bar{height:28px;background:#0b1712;border:2px solid var(--line);border-radius:20px;overflow:hidden;position:relative}
+.bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--leaf2),var(--leaf),var(--glow));box-shadow:0 0 14px var(--leaf);transition:width .5s}
+.bar>span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:15px;color:#fff;text-shadow:0 1px 2px #000}
+.stats{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:12px}
+.pill{border:2px solid var(--line);border-radius:999px;padding:7px 13px;font-weight:bold;font-size:16px;background:#0f2019;color:var(--ink)}
+.kspill{background:linear-gradient(90deg,#1f6b4a,#2a5fa8,#9b2d5a);border-color:#ffe66d88;box-shadow:0 0 12px #ffe66d55;font-size:17px}
+.tools{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px}
+button,.help{font:inherit;font-weight:bold;border:none;border-radius:18px;padding:12px 18px;min-height:52px;cursor:pointer;text-decoration:none;color:#14231c;display:inline-flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 4px 0 #0007;transition:transform .1s}
+button:active,.help:active{transform:translateY(3px);box-shadow:0 1px 0 #0007}
+button:focus-visible,.help:focus-visible,select:focus-visible,label.step:focus-within{outline:3px solid var(--glow);outline-offset:2px}
+.jump{background:linear-gradient(180deg,#fff3a3,var(--glow))}.reset{background:#ffb0b9}.ghost{background:#d8ccff}
+#unlockBtn.active{background:#a9f5c8}
+.help{background:linear-gradient(180deg,#ffb3e0,var(--pink));color:#3a0f2a}
+.here{background:linear-gradient(180deg,#b9ffd9,var(--leaf));color:#0c2a1c}
+.picker{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;margin-top:14px}
+.picker label{font-weight:bold;color:var(--glow)}
+select{font:inherit;font-size:17px;min-height:52px;border-radius:16px;border:2px solid var(--line);background:#0f2019;color:var(--ink);padding:8px 12px;max-width:100%}
+.chap{background:linear-gradient(160deg,var(--card),var(--card2));border:2px solid var(--line);border-radius:var(--radius);margin:18px 0;box-shadow:0 10px 30px #0008;overflow:hidden;position:relative}
+.chap::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:repeating-linear-gradient(90deg,var(--leaf2) 0 18px,var(--leaf) 18px 36px)}
+.chead{display:flex;align-items:center;gap:12px;padding:18px 14px 14px;cursor:pointer;user-select:none}
+.chead .ico{font-size:42px;filter:drop-shadow(0 0 8px #ffe66d66)}
+.chead h2{margin:0;font-size:clamp(20px,5vw,26px);color:#fff}.chead small{display:block;font-size:15px;color:var(--soft)}
+.chead .tw{flex:1;min-width:0}
+.chead .arrow{font-size:24px;color:var(--glow);transition:transform .2s}
+.chap.open .arrow{transform:rotate(90deg)}
+.chap.done{border-color:var(--glow);box-shadow:0 0 22px #ffe66d55,0 10px 30px #0008}
+.chap.done h2::after{content:" ⭐ DONE!";color:var(--glow)}
+.chap.locked{opacity:.75}
+.chap.locked .chead{filter:grayscale(.5)}
+.lockmsg{font-weight:bold;color:var(--fairy);font-size:15px}
+.cbody{display:none;padding:4px 12px 16px}
+.chap.open .cbody{display:block}
+.helprow{display:flex;justify-content:flex-end;margin:6px 0}
+.sec{margin:12px 0;border-radius:18px;background:#0e1d1780;border:1px solid #ffffff12;padding:4px 6px 8px}
+h3{margin:6px 2px 8px;font-size:19px;background:linear-gradient(90deg,#24503f,#2d2a57);color:#fff;border-radius:14px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+h3 span{font-size:15px;white-space:nowrap;color:var(--glow)}
+.sec.opt h3{background:linear-gradient(90deg,#3a2a5f,#5a2d55)}
+.sec.locked h3{background:#2a2f2d;color:#aab4ae}
+.sec.complete h3{background:linear-gradient(90deg,#1f6b4a,#2fa873);cursor:pointer}
+.sec.locked ol,.sec.complete:not(.peek) ol{display:none}
+.seclock{display:none;margin:0 8px 8px;font-weight:bold;color:var(--fairy)}
+.sec.locked .seclock{display:block}
+.sechelprow{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;margin:0 4px 8px}
+.sec.complete .here{display:none}
+.sec.complete:not(.peek) .sechelp{display:none}
+.sechelp,.here{min-height:48px;font-size:16px;padding:10px 14px}
+ol{list-style:none;margin:0;padding:0}
+li{margin:7px 0}
+label.step{display:flex;align-items:flex-start;gap:12px;padding:12px;border-radius:16px;background:#ffffff0d;border:1px solid #ffffff14;cursor:pointer;min-height:58px;color:var(--ink)}
+label.step:hover{background:#ffffff18}
+label.step input{appearance:none;-webkit-appearance:none;flex:0 0 36px;width:36px;height:36px;border:3px solid var(--leaf);border-radius:12px;background:#0b1712;margin:0;display:grid;place-content:center;cursor:pointer}
+label.step input:checked{background:var(--leaf);box-shadow:0 0 12px var(--leaf)}
+label.step input:checked::after{content:"✔";color:#0b1712;font-size:24px;font-weight:bold}
+label.step.on{background:#1f6b4a33;color:#a9c4b6}
+label.step.on .txt{text-decoration:line-through;text-decoration-color:#5fe0a080}
+.num{font-size:13px;color:#9fb5a9;min-width:28px;padding-top:7px}
+.txt{flex:1;padding-top:4px}
+.badge{display:inline-block;font-size:14px;font-weight:bold;border-radius:999px;padding:3px 10px;margin:2px 0 0 6px;white-space:nowrap;color:#1b1030}
+.b-HP{background:#ff9ec4}.b-HC{background:#ff5d7a;color:#fff}.b-TR{background:#ffe66d}
+.b-KS{background:linear-gradient(90deg,#7df0b5,#7ec8ff,#ff9ec4);box-shadow:0 0 10px #ffffff66;border:2px solid #fff}
+.ks-red{background:linear-gradient(90deg,#ff7b8a,#ffb3a1)}.ks-blue{background:linear-gradient(90deg,#6fb8ff,#a9dbff)}.ks-green{background:linear-gradient(90deg,#5fe0a0,#c3ffb0)}.ks-gold{background:linear-gradient(90deg,#ffd23f,#fff3a3)}
+.reward{display:block;margin-top:6px;font-size:15px;font-weight:bold;color:#ffe9a8;background:#ffe66d1a;border:1px dashed #ffe66d88;border-radius:10px;padding:4px 8px}
+.hint{display:block;font-size:15px;color:#e3d6ff;background:#c49bff22;border-radius:10px;padding:4px 8px;margin-top:6px}
+label.step.on .hint{display:none}
+li.note .notebox{background:#ffe66d14;border:2px dashed #ffe66d66;border-radius:12px;padding:8px 12px;font-size:16px;color:#fff3c4}
+li.flash label{animation:fl 1.2s 2}
+@keyframes fl{50%{background:#ffe66d44;box-shadow:0 0 0 4px var(--glow)}}
+details.fp{padding:0;overflow:hidden}
+details.fp>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:14px 16px;min-height:56px;border-radius:22px}
+details.fp>summary::-webkit-details-marker{display:none}
+details.fp>summary::after{content:"▾";margin-left:auto;font-size:22px;color:var(--glow);transition:transform .2s}
+details.fp:not([open])>summary::after{transform:rotate(-90deg)}
+details.fp>summary .youhere{margin-top:4px;padding:16px;border-radius:22px;background:radial-gradient(circle at 20% 0,#ffe66d22,transparent 60%),linear-gradient(135deg,#1f4a3a,#3a2a5e);border:2px solid #ffe66d66;box-shadow:0 0 18px #ffe66d33}
+.yh-tag{font-size:15px;font-weight:bold;color:var(--glow);letter-spacing:.5px}
+.yh-main{display:flex;align-items:center;gap:14px;margin:8px 0 12px}.yh-ico{font-size:52px;filter:drop-shadow(0 0 8px #ffe66d88)}
+.yh-ch{font-size:20px;font-weight:bold}.yh-se{font-size:18px;color:#ffe9a8;margin-top:2px}
+.yh-steps{margin-top:8px;font-weight:bold;color:#d9f5e6}
+.bigjump{display:block;width:calc(100% - 32px);box-sizing:border-box;margin:14px 0 6px;font-size:22px;min-height:64px}
+.nextup{text-align:center;color:#c9d9cf;font-size:16px;margin-bottom:6px}
+.tsec{margin-top:14px;padding:12px;border-radius:18px;background:#0b1712;border:1px solid #2f5a48}
+.tsec .th{font-size:17px;margin:0 0 4px;color:#fff3c4}.tdesc{margin:0 0 8px;font-size:15px;color:#b9cdc2}
+.tsec .tools,.tsec .picker{justify-content:flex-start;margin-top:6px}
+.tsec select{max-width:100%;flex:1 1 220px}
+.tsec.danger{border:2px solid #ff6b81;background:#2a0f17}.tsec.danger .th{color:#ff9aa9}
+.tsec.danger .reset{background:#ff4d6a;color:#fff;font-weight:bold}
+.ptitle{margin:0}
+details.fp>:not(summary){margin-left:16px;margin-right:16px}
+details.fp[open]{padding-bottom:16px}
+.psum{font-weight:bold;font-size:16px;background:#0b1712;border:1px solid #3e6b57;border-radius:999px;padding:4px 12px;color:#fff3c4}
+.kscols{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media (max-width:560px){.kscols{grid-template-columns:1fr}}
+.ksh{font-size:17px;margin:10px 0 6px;color:var(--glow)}
+.kslist{list-style:none;margin:0;padding:0;max-height:320px;overflow:auto}
+.kslist li{margin:6px 0;padding:8px 10px;border-radius:14px;background:#0b1712;border:1px solid #2f5a48}
+.kslink{color:#bfe9ff;font-weight:bold;text-decoration:none;display:flex;align-items:center;min-height:44px}
+.kswhere{display:block;font-size:13px;color:#9fb5a9}
+.ptitle{font-size:22px;margin:4px 0 10px;color:var(--glow);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.hearts{display:flex;flex-wrap:wrap;gap:4px;align-items:center;font-size:28px}
+.heart{filter:drop-shadow(0 0 6px #ff5d7a)}
+.hcount{font-size:16px;font-weight:bold;margin-left:8px;color:#ffd0da}
+.hpline{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0 16px}
+.hpmeter{display:inline-grid;grid-template-columns:1fr 1fr;width:46px;height:46px;border-radius:50%;overflow:hidden;border:3px solid #ff9ec4;box-shadow:0 0 10px #ff9ec488}
+.hpmeter .qt{background:#2a1b2e}.hpmeter .qt.on{background:radial-gradient(circle,#ff9ec4,#ff5d7a)}
+.hpmeter .qt:nth-child(3){order:4}.hpmeter .qt:nth-child(4){order:3}
+.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px}
+.item{border-radius:18px;padding:10px 6px;text-align:center;background:#0b1712;border:2px dashed #3e6b57;opacity:.55;filter:grayscale(.8)}
+.item .iic{font-size:32px}.item .inm{font-size:14px;font-weight:bold;line-height:1.2;margin-top:4px}.item .ist{font-size:12px;color:#9fb5a9;margin-top:4px}
+.item.have{opacity:1;filter:none;border:2px solid var(--glow);background:radial-gradient(circle at 50% 30%,#ffe66d33,#1f3b30);box-shadow:0 0 14px #ffe66d66}
+.item.have .ist{color:var(--glow)}
+.legend{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:10px;font-size:15px}
+#toast{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);background:linear-gradient(90deg,#3b2b6b,#1f6b4a);color:#fff;padding:12px 18px;border-radius:18px;border:2px solid var(--glow);box-shadow:0 0 20px #ffe66d66;font-weight:bold;opacity:0;transition:opacity .3s;pointer-events:none;z-index:20;max-width:92vw;text-align:center}
+#toast.show{opacity:1}
+.fab{position:fixed;right:14px;bottom:14px;z-index:15;box-shadow:0 0 18px #ffe66d99,0 4px 0 #0007}
+#modal{position:fixed;inset:0;background:#000a;display:none;align-items:center;justify-content:center;z-index:30;padding:12px}
+#modal.show{display:flex}
+#modal .box{background:linear-gradient(160deg,var(--card),var(--card2));border:2px solid var(--glow);border-radius:var(--radius);max-width:640px;width:100%;max-height:88vh;overflow:auto;padding:16px}
+#modal h2{margin:0 0 6px;color:var(--glow)}
+#modal .group{margin:10px 0 4px;font-weight:bold;color:var(--fairy);font-size:16px}
+#modal label{display:flex;gap:10px;align-items:flex-start;padding:10px;border-radius:14px;background:#ffffff0d;margin:6px 0;min-height:52px;cursor:pointer}
+#modal input{width:28px;height:28px;flex:0 0 28px;accent-color:#5fe0a0}
+#modal .mbtns{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end;position:sticky;bottom:-16px;background:var(--card2);padding:10px 0}
+footer{text-align:center;font-size:14px;color:#9fb5a9;margin-top:20px}
+@media (max-width:560px){body{font-size:18px}.chead .ico{font-size:34px}.wrap{padding:0 8px 130px}label.step{padding:10px;gap:10px}.tools button,.picker button{flex:1 1 44%}.sechelprow a,.sechelprow button{flex:1 1 45%}h3{flex-wrap:wrap}}
+
+/* ---- polish pass ---- */
+.b-HC{color:#3a0010}
+.tsec.danger .reset{background:#c8203f}
+footer{color:#c9d8cf}
+.item .ist{color:#c9d8cf}
+details.fp>summary{position:relative;padding-right:52px}
+details.fp>summary::after{position:absolute;right:18px;top:16px;margin:0}
+details.fp[open]>#sum-adv,details.fp[open]>summary>#sum-adv{display:none}
+@media (max-width:560px){details.fp>summary .psum{font-size:15px}}
+.sec.current{border:3px solid var(--glow);box-shadow:0 0 22px #ffe66d55;background:#1b2e2580;padding-top:0}
+.sec.current::before{content:"📍 You are here!";display:inline-block;margin:-2px 0 4px 8px;padding:4px 12px;border-radius:0 0 12px 12px;background:var(--glow);color:#3a2a00;font-weight:bold;font-size:15px}
+.sec.bfold ol{display:none}
+.sec.opt h3{cursor:pointer}
+.foldtip{display:none;margin:0 8px 8px;font-size:15px;color:#e3d6ff}
+.sec.bfold .foldtip{display:block}
+h3[role=button]:focus-visible,.chead:focus-visible,summary:focus-visible,a:focus-visible,label.step:focus-within{outline:3px solid var(--glow);outline-offset:2px}
+label.step{position:relative;transition:background .2s}
+label.step:active{transform:scale(.98)}
+label.step input:checked{animation:pop .35s ease-out}
+@keyframes pop{0%{transform:scale(.6)}60%{transform:scale(1.2)}100%{transform:scale(1)}}
+.spark{position:absolute;pointer-events:none;font-size:18px;left:22px;top:20px;animation:spark .8s ease-out forwards;z-index:2}
+@keyframes spark{0%{opacity:1;transform:translate(0,0) scale(.5)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.2)}}
+.fab{transition:opacity .25s,transform .25s;padding-bottom:calc(12px + env(safe-area-inset-bottom)*0)}
+.fab.hide{opacity:0;transform:translateY(20px);pointer-events:none}
+@media (max-width:560px){.fab{right:10px;bottom:10px;min-height:56px;padding:8px 14px;font-size:17px}}
+.youhere.won{background:radial-gradient(circle at 50% 0,#ffe66d55,transparent 60%),linear-gradient(135deg,#4a3a0c,#2a2440);border-color:var(--glow)}
+@media (max-width:560px){#toast{font-size:16px;padding:10px 14px;max-width:80vw}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.spark{display:none}}
+
+.donerow{display:flex;align-items:center;gap:10px;margin:18px 0;padding:14px 16px;min-height:56px;border-radius:var(--radius);background:linear-gradient(90deg,#1f6b4a,#2a5a3f);border:2px solid var(--glow);box-shadow:0 0 16px #ffe66d44;color:#fff;font-weight:bold;font-size:19px;cursor:pointer}
+.donerow[hidden]{display:none}.donerow .dr-t{flex:1}.donerow .dr-a{color:var(--glow);font-size:15px;white-space:nowrap}
+.chap.grouped{display:none}
+.sec.complete:not(.peek) .sechelprow{display:none}
+.vicbtn{display:block;width:calc(100% - 32px);margin:10px 0 4px;font-size:20px;min-height:58px;background:linear-gradient(180deg,#fff3a3,#e8b923);color:#3a2a00}
+.vicbtn[hidden]{display:none}
+#victory{position:fixed;inset:0;z-index:40;display:none;align-items:center;justify-content:center;padding:14px;background:radial-gradient(circle at 50% 30%,#4a3a0ccc,#0d1f17f2 70%)}
+#victory.show{display:flex}
+#confetti{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.vbox{position:relative;max-width:520px;width:100%;max-height:94vh;overflow:auto;text-align:center;padding:22px 18px;border-radius:28px;background:linear-gradient(160deg,#4a3a0c,#2a2440);border:3px solid var(--glow);box-shadow:0 0 40px #ffe66d99}
+.vbox h2{font-size:clamp(28px,8vw,40px);color:var(--glow);margin:6px 0;text-shadow:0 0 14px #ffe66d88}
+.vart{width:150px;height:150px;filter:drop-shadow(0 0 16px #ffe66d)}
+.vstats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+.vstat{background:#0b1712;border:2px solid #ffe66d66;border-radius:16px;padding:10px 4px;font-size:15px}.vstat b{display:block;font-size:26px;color:#fff}
+.vbtns{display:flex;flex-direction:column;gap:10px;align-items:stretch}
+.vhome{display:flex;align-items:center;justify-content:center;border-radius:18px;text-decoration:none;font-weight:bold;box-shadow:0 4px 0 #0007;font-size:21px;min-height:60px;background:linear-gradient(180deg,#b9ffd9,var(--leaf));color:#0c2a1c}
+.vclose{position:absolute;top:10px;right:10px;min-height:48px;min-width:48px;padding:6px 12px;background:#d8ccff;font-size:20px}
+@media (prefers-reduced-motion:reduce){#confetti{display:none}}
+.chg{display:inline-block;margin:4px 0 0 6px;font-size:13px;font-weight:bold;color:#3a2a00;background:#ffd27a;border-radius:999px;padding:2px 9px}
+label.step.on .chg{opacity:.6}
+.banner{position:relative;z-index:1;max-width:900px;margin:6px auto 0;padding:12px 16px;border-radius:18px;background:linear-gradient(90deg,#3b2b6b,#1f6b4a);border:2px dashed var(--glow);color:#fff8d6;font-weight:bold;text-align:center}
+.heartnote{font-size:14px;color:#ffd27a;margin:-6px 0 8px}
+</style>
+</head>
+<body>
+<header>
+<svg class="leafy" viewBox="0 0 420 34" aria-hidden="true"><path d="M10 20 Q105 2 210 18 T410 16" stroke="#5fe0a0" stroke-width="3" fill="none"/><g fill="#5fe0a0"><ellipse cx="60" cy="12" rx="10" ry="5" transform="rotate(-25 60 12)"/><ellipse cx="140" cy="10" rx="10" ry="5" transform="rotate(20 140 10)"/><ellipse cx="280" cy="24" rx="10" ry="5" transform="rotate(-20 280 24)"/><ellipse cx="360" cy="10" rx="10" ry="5" transform="rotate(25 360 10)"/></g><g fill="#ffe66d"><circle cx="100" cy="26" r="3"/><circle cx="210" cy="6" r="3.5"/><circle cx="320" cy="28" r="3"/></g><path d="M205 18 l5 -9 l5 9 l-5 9z" fill="#c49bff"/></svg>
+<a class="homelink" id="homeLink" href="../">🏠 All my adventures</a>
+<h1><span aria-hidden="true">🗡️</span> Katie's Zelda Adventure <span aria-hidden="true">🧚</span></h1>
+<div class="sub">The Ocarina of Time quest tracker (Switch 2, out Nov 5, 2026). Tick a box each time you do a big step!</div>
+<div class="banner" id="ootBanner">🛠️ Big steps are ready! Detailed puzzle help will be added after launch day.</div>
+</header>
+<div class="wrap">
+<details class="fp panel overall" id="p-adv" open><summary><span class="ptitle">🗺️ My Adventure</span><span class="psum" id="sum-adv"></span></summary>
+<div class="youhere"><div class="yh-tag">📍 You are here</div>
+<div class="yh-main"><span class="yh-ico" id="yhIco">🌳</span><div><div class="yh-ch" id="yhCh"></div><div class="yh-se" id="yhSe"></div></div></div>
+<div class="bar" id="allbar"><i></i><span></span></div>
+<div class="yh-steps" id="yhSteps"></div></div>
+<button class="jump bigjump" id="jumpBtn">▶️ Go to my next step</button>
+<div class="nextup" id="nextUp"></div>
+<button class="jump vicbtn" id="vicBtn" hidden>🏆 See my victory</button>
+<div class="stats" id="stats"></div>
+<div class="legend">
+<span class="badge b-HP">💗 Heart Piece</span><span class="badge b-HC">❤️ Heart Container</span><span class="badge b-KS ks-blue">🎵 Song</span><span class="badge b-KS ks-gold">💠 Stone / Medallion</span><span class="chg">⚠️ may be different</span><span class="badge b-TR">🎁 Treasure</span>
+</div>
+</details>
+<details class="fp panel" id="p-hearts" open><summary><span class="ptitle">❤️ Hearts</span><span class="psum" id="sum-hearts"></span></summary>
+<div id="hearts" class="hearts"></div>
+<div class="heartnote" id="heartNote" hidden></div><div class="hpline"><span id="hpMeter" class="hpmeter" aria-label="Heart piece meter"></span><span id="hpCounts" class="pill"></span></div>
+</details>
+<details class="fp panel" id="p-items" open><summary><span class="ptitle">🎒 Items</span><span class="psum" id="sum-items"></span></summary>
+<div><span id="itemCounts" class="pill"></span></div>
+<div id="items" class="items"></div>
+</details>
+<details class="fp panel" id="p-ks" open><summary><span class="ptitle">🎵 Songs & Medallions</span><span class="psum" id="sum-ks"></span></summary>
+<div id="ksStats" class="stats"></div>
+<div class="kscols"><div><h3 class="ksh">⏳ Still to do</h3><ul id="ksTodo" class="kslist"></ul></div><div><h3 class="ksh">✅ Done</h3><ul id="ksDone" class="kslist"></ul></div></div>
+</details>
+<details class="fp panel tools-panel" id="p-tools"><summary><span class="ptitle">🛠️ Grown-up tools</span><span class="psum" id="sum-tools">for parents</span></summary>
+<div class="tsec"><h3 class="th">📍 Already playing? Jump to where she is</h3>
+<p class="tdesc">Already partway through the game? Pick where she is and everything before gets ticked. Then you can tick the bonus things she already has.</p>
+<div class="picker"><select id="herePick" aria-label="Pick where Katie is now"></select><button class="here" id="hereGo">🧚 Start from here</button></div></div>
+<div class="tsec"><h3 class="th">📖 Show or hide chapters</h3><p class="tdesc">Opens or folds every chapter list.</p>
+<div class="tools"><button class="ghost" id="openAll">📖 Open all</button><button class="ghost" id="closeAll">📕 Close all</button></div></div>
+<div class="tsec"><h3 class="th">🔓 Unlock everything</h3><p class="tdesc">Use this if a step was missed and she's stuck behind a 🔒 lock. Tap again to turn locks back on.</p>
+<div class="tools"><button class="ghost" id="unlockBtn">🔒 Grown-up: unlock all</button></div></div>
+<div class="tsec danger"><h3 class="th">⚠️ Start over</h3><p class="tdesc">Erases ALL ticks. It asks twice first and can't be undone.</p>
+<div class="tools"><button class="reset" id="resetBtn">🔄 Start over</button></div></div>
+</details>
+<div class="donerow" id="doneRow" role="button" tabindex="0" aria-expanded="false" hidden><span class="dr-t" id="doneTxt"></span><span class="dr-a" id="doneTap"></span></div>
+<main id="chapters"></main>
+<footer>Big steps based on the Zelda Dungeon Ocarina of Time walkthrough (original game) and early reports about the 2026 remake. ⚠️ tags mark things that may be different in the new version. Your checks are saved on this device.</footer>
+</div>
+<button class="jump fab" id="jumpFab" aria-label="Jump to my next step">👉 Next</button>
+<div id="victory" role="dialog" aria-modal="true" aria-labelledby="vTitle"><canvas id="confetti" aria-hidden="true"></canvas><div class="vbox">
+<button class="vclose" id="vClose" aria-label="Close">✖</button>
+<svg class="vart" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 6 L94 84 L6 84Z" fill="#ffe66d" stroke="#c99a12" stroke-width="3"/><path d="M28 45 L72 45 L50 84Z" fill="#4a3a0c"/><g transform="rotate(-20 50 55)"><rect x="47" y="14" width="6" height="58" rx="2" fill="#e8f0ff" stroke="#9fb5d9"/><path d="M47 14 L50 6 L53 14Z" fill="#e8f0ff"/><rect x="36" y="70" width="28" height="6" rx="3" fill="#c49bff"/><rect x="47" y="76" width="6" height="14" rx="2" fill="#2fa873"/><circle cx="50" cy="73" r="3" fill="#ff5d7a"/></g></svg>
+<h2 id="vTitle">You beat Ocarina of Time, Katie!</h2>
+<p>Ganon is beaten and Hyrule is saved by the Hero of Time! 🎉</p>
+<div class="vstats"><div class="vstat"><b id="vHearts">0</b>❤️ hearts</div><div class="vstat"><b id="vHp">0</b>💗 Heart Pieces</div><div class="vstat"><b id="vKs">0</b>🎵 Songs</div></div>
+<div class="vbtns"><a class="jump vhome" id="vHome" href="../">🏠 Back to my adventures</a><button class="ghost" id="vStay">📖 Stay on my tracker</button></div>
+</div></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<div id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle"><div class="box"><h2 id="mTitle">🎒 What does she already have?</h2><div class="sub">These are bonus treasures from before this point. Tick only the ones she already has.</div><div id="mlist"></div><div class="mbtns"><button class="ghost" id="mSkip">Skip</button><button class="jump" id="mSave">✅ Save</button></div></div></div>
+<script>
+var DATA = [{"id": "o1", "name": "Fairy Friend & the Deku Tree", "real": "Inside the Great Deku Tree", "url": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/inside-the-great-deku-tree/", "icon": "🌳", "sections": [{"id": "a", "title": "🧚 Wake Up, Link!", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/inside-the-great-deku-tree/", "hk": "page", "opt": false, "steps": [["o1-a010", "Watch the story: the Great Deku Tree sends the fairy Navi to find Link.", "", "", 0, "", 0], ["o1-a020", "Navi wakes Link up in his tree house. Now you have a fairy friend!", "TR", "", 0, "", 0], ["o1-a030", "Climb down and say hi to Saria.", "", "", 0, "", 0], ["o1-a040", "Mido blocks the path to the Deku Tree. He says you need a sword AND a shield.", "", "", 0, "", 0], ["o1-a050", "New in this version: Link can jump with a button and sprint by holding the roll button!", "", "", 1, "", 1]]}, {"id": "b", "title": "🗡️ Sword & Shield", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/inside-the-great-deku-tree/", "hk": "page", "opt": false, "steps": [["o1-b010", "Crawl through the hole in the Forest Training Center (bottom-left of the village).", "", "", 0, "", 0], ["o1-b020", "Open the big chest to get the Kokiri Sword!", "TR", "", 0, "", 1], ["o1-b030", "Collect rupees around the village until you have 40.", "", "", 0, "", 1], ["o1-b040", "Buy the Deku Shield at the Kokiri Shop for 40 rupees.", "TR", "", 0, "", 0], ["o1-b050", "Equip the sword and shield, then show them to Mido.", "", "", 0, "", 0], ["o1-b060", "Walk past Mido and talk to the Great Deku Tree. Say yes to go inside!", "", "", 0, "", 0]]}, {"id": "c", "title": "🌳 Inside the Great Deku Tree", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/inside-the-great-deku-tree/", "hk": "page", "opt": false, "steps": [["o1-c010", "🔧 Puzzle steps coming after launch: the new version changed some puzzles.", "", "", 1, "", 1], ["o1-c020", "Find the Fairy Slingshot in the dungeon's big treasure chest.", "TR", "", 0, "", 1], ["o1-c030", "Find the Dungeon Map and the Compass.", "TR", "", 0, "", 0], ["o1-c040", "Break through the spider web on the floor to go down to the bottom.", "", "", 0, "", 0], ["o1-c050", "Beat the boss: Queen Gohma! Shoot her eye with the Slingshot, then slash. 🕷️", "", "", 0, "", 0], ["o1-c060", "Pick up the Heart Container.", "HC", "", 0, "", 0]]}, {"id": "d", "title": "💚 The Kokiri's Emerald", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/inside-the-great-deku-tree/", "hk": "page", "opt": false, "steps": [["o1-d010", "Step into the blue light to leave the dungeon.", "", "", 0, "", 0], ["o1-d020", "The Great Deku Tree tells you about Ganondorf and the Triforce.", "", "", 0, "", 0], ["o1-d030", "He gives you the Kokiri's Emerald, the first Spiritual Stone!", "KS", "", 0, "", 0], ["o1-d040", "He asks you to find the Princess of Destiny in Hyrule Castle.", "", "", 0, "", 0]]}]}, {"id": "o2", "name": "Meet the Princess", "real": "Princess of Destiny", "url": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/princess-of-destiny/", "icon": "👑", "sections": [{"id": "a", "title": "🎶 Leaving the Forest", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/princess-of-destiny/", "hk": "page", "opt": false, "steps": [["o2-a010", "Mido is grumpy. Walk out of Kokiri Forest across the bridge.", "", "", 0, "", 0], ["o2-a020", "Saria says goodbye and gives you the Fairy Ocarina!", "TR", "", 0, "", 0], ["o2-a030", "Meet Kaepora Gaebora the owl in Hyrule Field.", "", "", 0, "", 0], ["o2-a040", "Run across Hyrule Field to Castle Town before night.", "", "", 0, "", 0], ["o2-a050", "New in this version: the day and night keep going everywhere, even in towns.", "", "", 1, "", 1]]}, {"id": "b", "title": "🏙️ Castle Town Market (bonus)", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/princess-of-destiny/", "hk": "page", "opt": true, "steps": [["o2-b010", "Explore the Market and talk to everyone.", "", "", 0, "", 1], ["o2-b020", "Win the Shooting Gallery for a bigger seed bag.", "TR", "", 0, "", 1]]}, {"id": "c", "title": "🏰 Sneak Into Hyrule Castle", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/princess-of-destiny/", "hk": "page", "opt": false, "steps": [["o2-c010", "Walk up the path toward Hyrule Castle.", "", "", 0, "", 0], ["o2-c020", "Talk to Malon by the vines. She gives you the Weird Egg.", "TR", "", 0, "", 0], ["o2-c030", "Climb the vines and sneak past the guards.", "", "", 0, "", 0], ["o2-c040", "Wait for the egg to hatch into a Cucco. Use it to wake up Talon.", "", "", 0, "", 0], ["o2-c050", "Push the crates into the water and climb into the castle grounds.", "", "", 0, "", 0], ["o2-c060", "Sneak through the courtyard without the guards seeing you.", "", "", 0, "", 0], ["o2-c070", "Meet Princess Zelda! She tells you about Ganondorf and the Spiritual Stones.", "", "", 0, "", 0], ["o2-c080", "Zelda gives you Zelda's Letter.", "TR", "", 0, "", 0], ["o2-c090", "Impa teaches you Zelda's Lullaby!", "KS", "", 0, "", 0], ["o2-c100", "Impa points you to Kakariko Village and Death Mountain.", "", "", 0, "", 0]]}]}, {"id": "o3", "name": "Treasure Hunt Around Hyrule", "real": "The Mighty Collection", "url": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/the-mighty-collection/", "icon": "🎒", "sections": [{"id": "a", "title": "☀️ Kakariko & the Graveyard", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/the-mighty-collection/", "hk": "page", "opt": false, "steps": [["o3-a010", "Walk to Kakariko Village.", "", "", 0, "", 0], ["o3-a020", "Go to the Graveyard and play Zelda's Lullaby on the big grave's Triforce symbol.", "", "", 0, "", 0], ["o3-a030", "In the Royal Tomb, learn the Sun's Song!", "KS", "", 0, "", 0], ["o3-a040", "Find the free Hylian Shield in a grave with flowers in front of it.", "TR", "", 0, "", 0], ["o3-a050", "Catch all the Cuccos for the Cucco Lady. She gives you an Empty Bottle!", "TR", "", 0, "", 1]]}, {"id": "b", "title": "🐴 Lon Lon Ranch", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/the-mighty-collection/", "hk": "page", "opt": false, "steps": [["o3-b010", "Go to Lon Lon Ranch in the middle of Hyrule Field.", "", "", 0, "", 0], ["o3-b020", "Talk to Malon in the corral until she sings her mom's song.", "", "", 0, "", 0], ["o3-b030", "Play your Ocarina to learn Epona's Song!", "KS", "", 0, "", 0], ["o3-b040", "Win Talon's Super Cucco game for a bottle of Lon Lon Milk.", "TR", "", 0, "", 0]]}, {"id": "c", "title": "🌲 Saria's Song in the Lost Woods", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/the-mighty-collection/", "hk": "page", "opt": false, "steps": [["o3-c010", "Go back to Kokiri Forest and enter the Lost Woods.", "", "", 0, "", 0], ["o3-c020", "Follow the music: right, left, right, left, forward, left, right.", "", "", 0, "", 0], ["o3-c030", "Beat the Wolfos and the Mad Scrubs in the Sacred Forest Meadow.", "", "", 0, "", 0], ["o3-c040", "Find Saria in the meadow. She teaches you Saria's Song!", "KS", "", 0, "", 0]]}, {"id": "d", "title": "💗 Heart Pieces around Hyrule (bonus)", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/the-mighty-collection/", "hk": "page", "opt": true, "steps": [["o3-d010", "These are the original game's spots. They may be in different places in the new version.", "", "", 1, "", 1], ["o3-d020", "Graveyard: under a grave, play the Sun's Song for a chest.", "HP", "", 0, "", 1], ["o3-d030", "Graveyard: Dampe's grave-digging game at night.", "HP", "", 0, "", 1], ["o3-d040", "Lon Lon Ranch: crawl into a hole behind the crates in the silo.", "HP", "", 0, "", 1], ["o3-d050", "Gerudo Valley: behind the waterfall, climb the ladder.", "HP", "", 0, "", 1], ["o3-d060", "Gerudo Valley: fly with a Cucco to the crate on the ledge.", "HP", "", 0, "", 1], ["o3-d070", "Lake Hylia: catch a 10-pound fish at the Fishing Pond.", "HP", "", 0, "", 1], ["o3-d080", "Lost Woods: win the Skull Kids' song game on the stump.", "HP", "", 0, "", 1], ["o3-d090", "Lost Woods: play Saria's Song for the Skull Kid.", "HP", "", 0, "", 1], ["o3-d100", "Castle Town: bring the white dog Richard home at night.", "HP", "", 0, "", 1]]}, {"id": "e", "title": "🕷️ Gold Skulltula prizes (bonus)", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/the-mighty-collection/", "hk": "page", "opt": true, "steps": [["o3-e010", "The House of Skulltula gives prizes for tokens. Link already starts with a 200-rupee wallet in the new version, so the old 10-token wallet prize has changed.", "", "", 1, "", 1], ["o3-e020", "Collect 10 Gold Skulltula tokens and visit the House of Skulltula.", "", "", 0, "", 1]]}]}, {"id": "o4", "name": "Rock-Eating Gorons", "real": "Dodongo's Cavern", "url": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/dodongos-cavern/", "icon": "🪨", "sections": [{"id": "a", "title": "⛰️ Up Death Mountain", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/dodongos-cavern/", "hk": "page", "opt": false, "steps": [["o4-a010", "Show Zelda's Letter to the guard at the Death Mountain gate in Kakariko.", "", "", 0, "", 0], ["o4-a020", "Climb Death Mountain Trail to Goron City.", "", "", 0, "", 0], ["o4-a030", "Play Zelda's Lullaby on the carpet to open Darunia's door.", "", "", 0, "", 0], ["o4-a040", "Play Saria's Song for Darunia. He dances! 🕺", "", "", 0, "", 0], ["o4-a050", "Darunia gives you the Goron's Bracelet!", "TR", "", 0, "", 0], ["o4-a060", "Throw a Bomb Flower down to open Dodongo's Cavern.", "", "", 0, "", 0]]}, {"id": "b", "title": "🦎 Dodongo's Cavern", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/dodongos-cavern/", "hk": "page", "opt": false, "steps": [["o4-b010", "🔧 Puzzle steps coming after launch: the new version changed some puzzles.", "", "", 1, "", 1], ["o4-b020", "Find the Dungeon Map and the Compass.", "TR", "", 0, "", 0], ["o4-b030", "Get the Bomb Bag! Now you can carry bombs.", "TR", "", 0, "", 0], ["o4-b040", "Light up the giant Dodongo skull's eyes with bombs to open its mouth.", "", "", 0, "", 0], ["o4-b050", "Beat the boss: King Dodongo! Throw a bomb in his mouth, then slash. 🔥", "", "", 0, "", 0], ["o4-b060", "Pick up the Heart Container.", "HC", "", 0, "", 0]]}, {"id": "c", "title": "❤️‍🔥 The Goron's Ruby", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/dodongos-cavern/", "hk": "page", "opt": false, "steps": [["o4-c010", "Darunia makes you his Sworn Brother.", "", "", 0, "", 0], ["o4-c020", "He gives you the Goron's Ruby, the second Spiritual Stone!", "KS", "", 0, "", 0], ["o4-c030", "Climb to the top of Death Mountain.", "", "", 0, "", 0], ["o4-c040", "Bomb the wall and play Zelda's Lullaby: the Great Fairy gives you the Spin Attack.", "TR", "", 0, "", 0], ["o4-c050", "Ride the owl back down to Kakariko.", "", "", 0, "", 0]]}, {"id": "d", "title": "💗 Heart Pieces near Death Mountain (bonus)", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/dodongos-cavern/", "hk": "page", "opt": true, "steps": [["o4-d010", "These are the original game's spots. They may be in different places in the new version.", "", "", 1, "", 1], ["o4-d020", "Goron City: bomb the spinning pot when the face smiles.", "HP", "", 0, "", 1], ["o4-d030", "Death Mountain Crater: climb down the wall to a little nook.", "HP", "", 0, "", 1], ["o4-d040", "Kakariko: from the owl's drop-off, the house with the cow.", "HP", "", 0, "", 1], ["o4-d050", "Castle Town: win Bombchu Bowling.", "HP", "", 0, "", 1], ["o4-d060", "Hyrule Field: bomb the grotto near Lake Hylia and buy from the Scrub.", "HP", "", 0, "", 1]]}, {"id": "e", "title": "🔥 Din's Fire (bonus)", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/dodongos-cavern/", "hk": "page", "opt": true, "steps": [["o4-e010", "Bomb the boulder past the Hyrule Castle \"Dead End\" sign.", "", "", 0, "", 0], ["o4-e020", "Play Zelda's Lullaby: the Great Fairy gives you Din's Fire!", "TR", "", 0, "", 1]]}]}, {"id": "o5", "name": "Inside the Big Fish", "real": "Inside Jabu-Jabu's Belly", "url": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/inside-jabu-jabus-belly/", "icon": "🐟", "sections": [{"id": "a", "title": "🌊 Zora's River & Zora's Domain", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/inside-jabu-jabus-belly/", "hk": "page", "opt": false, "steps": [["o5-a010", "Follow the river from Hyrule Field to Zora's River.", "", "", 0, "", 0], ["o5-a020", "Buy Magic Beans from the bean man. Plant one in the soft soil.", "TR", "", 0, "", 0], ["o5-a030", "Play Zelda's Lullaby by the waterfall to open Zora's Domain.", "", "", 0, "", 0], ["o5-a040", "Win the diving game to get the Silver Scale!", "TR", "", 0, "", 0], ["o5-a050", "Dive through the tunnel to Lake Hylia and find Ruto's Letter in a bottle.", "TR", "", 0, "", 1], ["o5-a060", "Show the letter to King Zora. He moves out of the way.", "", "", 0, "", 0], ["o5-a070", "Catch a fish in your bottle.", "", "", 0, "", 0], ["o5-a080", "Give the fish to Lord Jabu-Jabu. He swallows you!", "", "", 0, "", 0]]}, {"id": "b", "title": "🐟 Inside Jabu-Jabu's Belly", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/inside-jabu-jabus-belly/", "hk": "page", "opt": false, "steps": [["o5-b010", "🔧 Puzzle steps coming after launch: the new version changed some puzzles.", "", "", 1, "", 1], ["o5-b020", "Find Princess Ruto and carry her around.", "", "", 0, "", 0], ["o5-b030", "Get the Boomerang!", "TR", "", 0, "", 0], ["o5-b040", "Find the Dungeon Map and the Compass.", "TR", "", 0, "", 0], ["o5-b050", "Beat the miniboss: Big Octo.", "", "", 0, "", 1], ["o5-b060", "Beat the boss: Barinade! Boomerang its tentacles, then slash. ⚡", "", "", 0, "", 0], ["o5-b070", "Pick up the Heart Container.", "HC", "", 0, "", 0]]}, {"id": "c", "title": "💙 Zora's Sapphire", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/inside-jabu-jabus-belly/", "hk": "page", "opt": false, "steps": [["o5-c010", "Ruto gives you Zora's Sapphire, the third Spiritual Stone!", "KS", "", 0, "", 0], ["o5-c020", "Now you have all three Spiritual Stones. Go back to Hyrule Castle!", "", "", 0, "", 0]]}, {"id": "d", "title": "💗 Zora Heart Pieces & Farore's Wind (bonus)", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/inside-jabu-jabus-belly/", "hk": "page", "opt": true, "steps": [["o5-d010", "These are the original game's spots. They may be in different places in the new version.", "", "", 1, "", 1], ["o5-d020", "Zora's River: the Heart Piece on the pillar in the water.", "HP", "", 0, "", 1], ["o5-d030", "Zora's River: the Heart Piece near the waterfall.", "HP", "", 0, "", 1], ["o5-d040", "Zora's Domain: light all the torches for a chest behind the waterfall.", "HP", "", 0, "", 1], ["o5-d050", "Zora's Fountain: bomb the wall for the Great Fairy's Farore's Wind.", "TR", "", 0, "", 1]]}]}, {"id": "o6", "name": "Seven Years Later", "real": "Timely Appearance", "url": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/timely-appearance/", "icon": "⏳", "sections": [{"id": "a", "title": "🎵 The Ocarina of Time", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/timely-appearance/", "hk": "page", "opt": false, "steps": [["o6-a010", "Ganondorf chases Zelda and Impa out of the castle!", "", "", 0, "", 0], ["o6-a020", "Zelda throws the Ocarina of Time into the moat.", "", "", 0, "", 0], ["o6-a030", "Dive in and get the Ocarina of Time!", "TR", "", 0, "", 0], ["o6-a040", "Zelda teaches you the Song of Time.", "KS", "", 0, "", 0]]}, {"id": "b", "title": "🎭 Mask of Truth (bonus)", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/timely-appearance/", "hk": "page", "opt": true, "steps": [["o6-b010", "Borrow masks from the Happy Mask Shop and sell them to the right people.", "", "", 0, "", 0], ["o6-b020", "Get the Mask of Truth.", "TR", "", 0, "", 0]]}, {"id": "c", "title": "⚔️ The Master Sword", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/timely-appearance/", "hk": "page", "opt": false, "steps": [["o6-c010", "Go to the Temple of Time in Castle Town.", "", "", 0, "", 0], ["o6-c020", "Put the three Spiritual Stones on the altar and play the Song of Time.", "", "", 0, "", 0], ["o6-c030", "Pull the Master Sword from its pedestal!", "TR", "", 0, "", 0], ["o6-c040", "Link sleeps for 7 years and wakes up as a grown-up!", "", "", 0, "", 0], ["o6-c050", "Rauru the Sage gives you the Light Medallion.", "KS", "", 0, "", 0], ["o6-c060", "Meet Sheik in the Temple of Time.", "", "", 0, "", 0]]}, {"id": "d", "title": "🐎 Adult Link's World", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/timely-appearance/", "hk": "page", "opt": false, "steps": [["o6-d010", "Go to Kakariko Village and learn the Prelude of Light from Sheik.", "KS", "", 0, "", 0], ["o6-d020", "Win the race against Ingo at Lon Lon Ranch to get Epona!", "TR", "", 0, "", 0], ["o6-d030", "Win Dampe's race in his grave to get the Hookshot!", "TR", "", 0, "", 0]]}]}, {"id": "o7", "name": "Spooky Forest Temple", "real": "Forest Temple", "url": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/forest-temple/", "icon": "🌲", "sections": [{"id": "a", "title": "🌿 To the Sacred Forest Meadow", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/forest-temple/", "hk": "page", "opt": false, "steps": [["o7-a010", "Go back to Kokiri Forest. It's full of monsters now!", "", "", 0, "", 0], ["o7-a020", "Go through the Lost Woods to the Sacred Forest Meadow.", "", "", 0, "", 0], ["o7-a030", "Sheik teaches you the Minuet of Forest.", "KS", "", 0, "", 0], ["o7-a040", "Use the Hookshot to get up to the Forest Temple door.", "", "", 0, "", 1]]}, {"id": "b", "title": "👻 The Forest Temple", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/forest-temple/", "hk": "page", "opt": false, "steps": [["o7-b010", "🔧 Puzzle steps coming after launch: the new version changed some puzzles. The temple got a makeover and a new elevator!", "", "", 1, "", 1], ["o7-b020", "Find the Dungeon Map and the Compass.", "TR", "", 0, "", 0], ["o7-b030", "Beat the Stalfos miniboss. The old hole in the floor is now an acid pool!", "", "", 0, "", 1], ["o7-b040", "Get the Fairy Bow!", "TR", "", 0, "", 0], ["o7-b050", "Find and beat all four Poe Sisters to light the torches.", "", "", 0, "", 1], ["o7-b060", "Beat the boss: Phantom Ganon! Shoot the real one, then hit his magic back. 🐴", "", "", 0, "", 0], ["o7-b070", "Pick up the Heart Container.", "HC", "", 0, "", 0], ["o7-b080", "Saria wakes up as the Sage of Forest. She gives you the Forest Medallion!", "KS", "", 0, "", 0]]}]}, {"id": "o8", "name": "Hot Hot Fire Temple", "real": "Fire Temple", "url": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/fire-temple/", "icon": "🔥", "sections": [{"id": "a", "title": "🌋 Goron City Grown Up", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/fire-temple/", "hk": "page", "opt": false, "steps": [["o8-a010", "Climb Death Mountain to Goron City.", "", "", 0, "", 0], ["o8-a020", "Stop Link the Goron by rolling bombs. He gives you the Goron Tunic!", "TR", "", 0, "", 0], ["o8-a030", "Go into Death Mountain Crater.", "", "", 0, "", 0], ["o8-a040", "Sheik teaches you the Bolero of Fire.", "KS", "", 0, "", 0]]}, {"id": "b", "title": "🔥 The Fire Temple", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/fire-temple/", "hk": "page", "opt": false, "steps": [["o8-b010", "🔧 Puzzle steps coming after launch: the new version changed some puzzles.", "", "", 1, "", 1], ["o8-b020", "Wear the Goron Tunic so you don't get too hot!", "", "", 0, "", 0], ["o8-b030", "Free the Gorons locked in cells.", "", "", 0, "", 0], ["o8-b040", "Find the Dungeon Map and the Compass.", "TR", "", 0, "", 0], ["o8-b050", "Get the Megaton Hammer!", "TR", "", 0, "", 0], ["o8-b060", "Beat the boss: Volvagia! Hit the dragon with the Hammer when it pops up. 🐉", "", "", 0, "", 0], ["o8-b070", "Pick up the Heart Container.", "HC", "", 0, "", 0], ["o8-b080", "Darunia is the Sage of Fire. He gives you the Fire Medallion!", "KS", "", 0, "", 0]]}]}, {"id": "o9", "name": "Icy Cavern", "real": "Ice Cavern", "url": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/ice-cavern/", "icon": "❄️", "sections": [{"id": "a", "title": "🧊 Frozen Zora's Domain", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/ice-cavern/", "hk": "page", "opt": false, "steps": [["o9-a010", "Go to Zora's Domain. Everything is frozen!", "", "", 0, "", 0], ["o9-a020", "Enter the Ice Cavern behind King Zora.", "", "", 0, "", 0]]}, {"id": "b", "title": "❄️ The Ice Cavern", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/ice-cavern/", "hk": "page", "opt": false, "steps": [["o9-b010", "🔧 Puzzle steps coming after launch: the new version changed some puzzles.", "", "", 1, "", 1], ["o9-b020", "Find the Dungeon Map and the Compass.", "TR", "", 0, "", 0], ["o9-b030", "Collect the silver rupees to open the doors.", "", "", 0, "", 0], ["o9-b040", "Get a Bottle with Blue Fire.", "TR", "", 0, "", 1], ["o9-b050", "Beat the White Wolfos.", "", "", 0, "", 0], ["o9-b060", "Get the Iron Boots!", "TR", "", 0, "", 0], ["o9-b070", "Sheik teaches you the Serenade of Water.", "KS", "", 0, "", 0]]}, {"id": "c", "title": "💙 Zora Tunic", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/ice-cavern/", "hk": "page", "opt": false, "steps": [["o9-c010", "Melt the red ice on King Zora with Blue Fire.", "", "", 0, "", 0], ["o9-c020", "King Zora gives you the Zora Tunic so you can breathe underwater!", "TR", "", 0, "", 0]]}, {"id": "d", "title": "🗡️ Biggoron's Sword trade (bonus)", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/ice-cavern/", "hk": "page", "opt": true, "steps": [["o9-d010", "Trade items with people around Hyrule, starting with the Pocket Egg.", "", "", 0, "", 1], ["o9-d020", "Get the Biggoron's Sword!", "TR", "", 0, "", 0]]}]}, {"id": "o10", "name": "Splashy Water Temple", "real": "Water Temple", "url": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/water-temple/", "icon": "💧", "sections": [{"id": "a", "title": "🏝️ Lake Hylia", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/water-temple/", "hk": "page", "opt": false, "steps": [["o10-a010", "Go to Lake Hylia. The water is almost gone!", "", "", 0, "", 0], ["o10-a020", "Wear the Iron Boots and Zora Tunic and sink to the temple door.", "", "", 0, "", 0]]}, {"id": "b", "title": "💧 The Water Temple", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/water-temple/", "hk": "page", "opt": false, "steps": [["o10-b010", "🔧 Puzzle steps coming after launch: the new version changed some puzzles.", "", "", 1, "", 1], ["o10-b020", "Find Ruto inside. She shows you where to change the water level.", "", "", 0, "", 0], ["o10-b030", "Play Zelda's Lullaby on the Triforce marks to raise and lower the water.", "", "", 0, "", 0], ["o10-b040", "Find the Dungeon Map and the Compass.", "TR", "", 0, "", 0], ["o10-b050", "Beat Dark Link in the misty room.", "", "", 0, "", 1], ["o10-b060", "Get the Longshot!", "TR", "", 0, "", 0], ["o10-b070", "Beat the boss: Morpha! Longshot the core out of the water and slash it. 💦", "", "", 0, "", 0], ["o10-b080", "Pick up the Heart Container.", "HC", "", 0, "", 0], ["o10-b090", "Ruto is the Sage of Water. She gives you the Water Medallion!", "KS", "", 0, "", 0]]}]}, {"id": "o11", "name": "Bottom of the Well", "real": "Bottom of the Well", "url": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/bottom-of-the-well/", "icon": "🕳️", "sections": [{"id": "a", "title": "🔥 Kakariko on Fire", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/bottom-of-the-well/", "hk": "page", "opt": false, "steps": [["o11-a010", "Go to Kakariko Village. It's on fire!", "", "", 0, "", 0], ["o11-a020", "Sheik teaches you the Nocturne of Shadow.", "KS", "", 0, "", 0], ["o11-a030", "Go back in time: put the Master Sword back in the Temple of Time.", "", "", 0, "", 0], ["o11-a040", "As kid Link, go to the windmill and learn the Song of Storms.", "KS", "", 0, "", 0], ["o11-a050", "Play the Song of Storms to drain the well.", "", "", 0, "", 0]]}, {"id": "b", "title": "🕳️ Bottom of the Well", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/bottom-of-the-well/", "hk": "page", "opt": false, "steps": [["o11-b010", "🔧 Puzzle steps coming after launch: the new version changed some puzzles.", "", "", 1, "", 1], ["o11-b020", "Find the Dungeon Map and the Compass.", "TR", "", 0, "", 0], ["o11-b030", "Beat Dead Hand.", "", "", 0, "", 0], ["o11-b040", "Get the Lens of Truth!", "TR", "", 0, "", 0], ["o11-b050", "Climb out and go back to being grown-up.", "", "", 0, "", 0]]}]}, {"id": "o12", "name": "Spooky Shadow Temple", "real": "Shadow Temple", "url": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/shadow-temple/", "icon": "👻", "sections": [{"id": "a", "title": "🪦 The Graveyard Cliff", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/shadow-temple/", "hk": "page", "opt": false, "steps": [["o12-a010", "Use the Nocturne of Shadow to warp to the Shadow Temple.", "", "", 0, "", 0], ["o12-a020", "Light the torches with Din's Fire to open the door.", "", "", 0, "", 0]]}, {"id": "b", "title": "👻 The Shadow Temple", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/shadow-temple/", "hk": "page", "opt": false, "steps": [["o12-b010", "🔧 Puzzle steps coming after launch: the new version changed some puzzles.", "", "", 1, "", 1], ["o12-b020", "Use the Lens of Truth to see hidden things.", "", "", 0, "", 0], ["o12-b030", "Find the Dungeon Map and the Compass.", "TR", "", 0, "", 0], ["o12-b040", "Get the Hover Boots!", "TR", "", 0, "", 0], ["o12-b050", "Ride the ghost boat across the river.", "", "", 0, "", 0], ["o12-b060", "Beat the boss: Bongo Bongo! Shoot both hands, then the eye. 🥁", "", "", 0, "", 0], ["o12-b070", "Pick up the Heart Container.", "HC", "", 0, "", 0], ["o12-b080", "Impa is the Sage of Shadow. She gives you the Shadow Medallion!", "KS", "", 0, "", 0]]}]}, {"id": "o13", "name": "Desert Spirit Temple", "real": "Spirit Temple", "url": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/spirit-temple/", "icon": "🏜️", "sections": [{"id": "a", "title": "🏴‍☠️ Gerudo's Fortress", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/spirit-temple/", "hk": "page", "opt": false, "steps": [["o13-a010", "Ride Epona across Gerudo Valley.", "", "", 0, "", 0], ["o13-a020", "Rescue the four carpenters in Gerudo's Fortress.", "", "", 0, "", 0], ["o13-a030", "Get the Gerudo Membership Card!", "TR", "", 0, "", 0], ["o13-a040", "Cross the Haunted Wasteland. Follow the flags and the ghost guide.", "", "", 0, "", 0], ["o13-a050", "At the Desert Colossus, the Great Fairy gives you Nayru's Love.", "TR", "", 0, "", 1], ["o13-a060", "Sheik teaches you the Requiem of Spirit.", "KS", "", 0, "", 0]]}, {"id": "b", "title": "🧒 Spirit Temple: Kid Link Side", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/spirit-temple/", "hk": "page", "opt": false, "steps": [["o13-b010", "🔧 Puzzle steps coming after launch: the new version changed some puzzles.", "", "", 1, "", 1], ["o13-b020", "Go back in time and play the Requiem of Spirit as kid Link.", "", "", 0, "", 0], ["o13-b030", "Get the Silver Gauntlets!", "TR", "", 0, "", 0]]}, {"id": "c", "title": "🧑 Spirit Temple: Grown-up Side", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/spirit-temple/", "hk": "page", "opt": false, "steps": [["o13-c010", "🔧 Puzzle steps coming after launch: the new version changed some puzzles.", "", "", 1, "", 1], ["o13-c020", "Lift the silver blocks with the Silver Gauntlets.", "", "", 0, "", 0], ["o13-c030", "Find the Dungeon Map and the Compass.", "TR", "", 0, "", 0], ["o13-c040", "Get the Mirror Shield!", "TR", "", 0, "", 0], ["o13-c050", "Beat Iron Knuckle. It's Nabooru!", "", "", 0, "", 0], ["o13-c060", "Beat the boss: Twinrova! Bounce their fire and ice back with the Mirror Shield. 🧙‍♀️🧙‍♀️", "", "", 0, "", 0], ["o13-c070", "Pick up the Heart Container.", "HC", "", 0, "", 0], ["o13-c080", "Nabooru is the Sage of Spirit. She gives you the Spirit Medallion!", "KS", "", 0, "", 0]]}]}, {"id": "o14", "name": "Ganon's Castle", "real": "Ganon's Castle", "url": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/ganons-castle/", "icon": "🏰", "sections": [{"id": "a", "title": "🌟 Light Arrows", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/ganons-castle/", "hk": "page", "opt": false, "steps": [["o14-a010", "Go to the Temple of Time.", "", "", 0, "", 0], ["o14-a020", "Sheik shows who she really is: Princess Zelda!", "", "", 0, "", 0], ["o14-a030", "Zelda gives you the Light Arrows!", "TR", "", 0, "", 0], ["o14-a040", "Ganondorf captures Zelda. Go to Ganon's Castle!", "", "", 0, "", 0]]}, {"id": "b", "title": "🏰 Ganon's Castle", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/ganons-castle/", "hk": "page", "opt": false, "steps": [["o14-b010", "🔧 Puzzle steps coming after launch: the new version changed some puzzles.", "", "", 1, "", 1], ["o14-b020", "The six Sages build a rainbow bridge to the castle.", "", "", 0, "", 0], ["o14-b030", "Break the six magic barriers inside the castle.", "", "", 0, "", 0], ["o14-b040", "Climb the big tower to the top.", "", "", 0, "", 0]]}, {"id": "c", "title": "⚔️ The Final Battle", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/ganons-castle/", "hk": "page", "opt": false, "steps": [["o14-c010", "Beat Ganondorf! Hit his light balls back, then shoot him with Light Arrows.", "", "", 0, "", 0], ["o14-c020", "Escape the falling castle with Zelda.", "", "", 0, "", 0], ["o14-c030", "Beat Ganon! Hit his tail. Zelda holds him with her magic.", "", "", 0, "", 0], ["o14-c040", "Use the Master Sword to finish him!", "", "", 0, "", 0], ["o14-c050", "Watch the ending. You saved Hyrule! 🎉", "", "", 0, "", 0]]}, {"id": "d", "title": "🏆 New in this version (bonus)", "help": "https://www.zeldadungeon.net/ocarina-of-time-walkthrough/ganons-castle/", "hk": "page", "opt": true, "steps": [["o14-d010", "Look at the Threads of Time to see your progress and where to go next.", "", "", 1, "", 1], ["o14-d020", "Find the Hall of Fallen Foes (its spot will be added after launch).", "", "", 0, "", 1], ["o14-d030", "Rematch a boss in the Hall of Fallen Foes and beat your best time.", "", "", 0, "", 1], ["o14-d040", "Get the Ice Arrows from the Gerudo Training Ground.", "TR", "", 0, "", 1]]}]}];
+var CFG = {"ns": "katieZeldaOoT", "items": [["🗡️", "Kokiri Sword", ["o1-b020"]], ["🛡️", "Deku Shield", ["o1-b040"]], ["🪃", "Fairy Slingshot", ["o1-c020"]], ["🎶", "Fairy Ocarina", ["o2-a020"]], ["🥚", "Weird Egg", ["o2-c020"]], ["✉️", "Zelda's Letter", ["o2-c080"]], ["🛡️", "Hylian Shield", ["o3-a040"]], ["🍶", "Bottle", ["o3-a050"]], ["💪", "Goron's Bracelet", ["o4-a050"]], ["💣", "Bomb Bag", ["o4-b030"]], ["🔥", "Din's Fire", ["o4-e020"]], ["🫘", "Magic Beans", ["o5-a020"]], ["🐟", "Silver Scale", ["o5-a040"]], ["📜", "Ruto's Letter", ["o5-a050"]], ["🪃", "Boomerang", ["o5-b030"]], ["🎵", "Ocarina of Time", ["o6-a030"]], ["🎭", "Mask of Truth", ["o6-b020"]], ["⚔️", "Master Sword", ["o6-c030"]], ["🐎", "Epona", ["o6-d020"]], ["⛓️", "Hookshot", ["o6-d030"]], ["🏹", "Fairy Bow", ["o7-b040"]], ["🔴", "Goron Tunic", ["o8-a020"]], ["🔨", "Megaton Hammer", ["o8-b050"]], ["🔵", "Blue Fire", ["o9-b040"]], ["🥾", "Iron Boots", ["o9-b060"]], ["🔷", "Zora Tunic", ["o9-c020"]], ["🗡️", "Biggoron's Sword", ["o9-d020"]], ["⛓️", "Longshot", ["o10-b060"]], ["👁️", "Lens of Truth", ["o11-b040"]], ["👢", "Hover Boots", ["o12-b040"]], ["🪪", "Gerudo Card", ["o13-a030"]], ["💎", "Nayru's Love", ["o13-a050"]], ["🧤", "Silver Gauntlets", ["o13-b030"]], ["🪞", "Mirror Shield", ["o13-c040"]], ["🌟", "Light Arrows", ["o14-a030"]], ["❄️", "Ice Arrows", ["o14-d040"]]], "series": {"icon": "", "name": "", "ids": []}, "hpTotal": 36, "hcTotal": 8, "ksMode": "quest", "ksBadge": "🎵 Song", "ksPill": ["🎵 Songs learned: ", " · 💠 Stones & Medallions: "], "ksSum": ["🎵 ", " · 💠 "], "preset": "Hylian Shield|Din's Fire|Mask of Truth", "heartNote": "⚠️ Link starts with 3 hearts in the original game. Not confirmed for the new version yet. Heart Piece list: 17 of the original 36 spots so far (may be different in the new version)."};
+var NS = CFG.ns || "katieZeldaMC";
+var KEY = NS + ".v1", OPENKEY = NS + ".open.v1", UNLOCKKEY = NS + ".unlockAll.v1";
+var BADGE = {HP:["b-HP","💗 Heart Piece"],HC:["b-HC","❤️ Heart Container"],KS:["b-KS",CFG.ksBadge || "💎 Kinstone"],TR:["b-TR","🎁 Treasure"]};
+function load(k, d){ try { var v = JSON.parse(localStorage.getItem(k)); return v != null && typeof v === typeof d ? v : d; } catch(e){ return d; } }
+function save(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+var done = load(KEY, {}), open = load(OPENKEY, {}), unlockAll = load(UNLOCKKEY, false), peek = {};
+function el(t, c, h){ var e = document.createElement(t); if(c) e.className = c; if(h != null) e.textContent = h; return e; }
+function toast(m){ var t = document.getElementById("toast"); t.textContent = m; t.classList.add("show"); clearTimeout(toast.h); toast.h = setTimeout(function(){ t.classList.remove("show"); }, 2200); }
+function setBar(b, d, n){ var p = n ? Math.round(d*100/n) : 0; b.querySelector("i").style.width = p + "%"; b.querySelector("span").textContent = d + " / " + n + " (" + p + "%)"; }
+function ksInfo(st){
+  if(CFG.ksMode === "quest"){ var stone = /Medallion|Emerald|Ruby|Sapphire|Stone of/.test(st[1]); return {fuse: stone, cls: stone ? "ks-gold" : "ks-blue", label: stone ? "💠 Stone / Medallion" : "🎵 Song"}; }
+  var t = st[1], fuse = /\bfuse|Fuse/.test(t);
+  var col = /Gold(en)?/.test(t) ? "gold" : /\bRed\b/.test(t) ? "red" : /\bBlue\b/.test(t) ? "blue" : /\bGreen\b/.test(t) ? "green" : "";
+  var name = col ? {gold:"Golden", red:"Red", blue:"Blue", green:"Green"}[col] + " " : "";
+  return {fuse: fuse, cls: col ? "ks-" + col : "", label: fuse ? "✨ Fusion: " + name + "Kinstone" : "💎 Get " + name + "Kinstone"};
+}
+function isNote(st){ return st.length > 4 && st[4]; }
+function render(){
+  var root = document.getElementById("chapters");
+  DATA.forEach(function(ch, ci){
+    ch._num = ci + 1;
+    var c = el("section", "chap"); c.id = "chap-" + ch.id;
+    var hd = el("div", "chead"); hd.setAttribute("role", "button"); hd.tabIndex = 0;
+    hd.appendChild(el("span", "ico", ch.icon));
+    var tw = el("div", "tw"); tw.appendChild(el("h2", null, "Chapter " + (ci+1) + ": " + ch.name));
+    tw.appendChild(el("small", null, ch.real));
+    var lockMsg = el("div", "lockmsg"); tw.appendChild(lockMsg); ch._lockMsg = lockMsg;
+    var bar = el("div", "bar"); bar.appendChild(el("i")); bar.appendChild(el("span")); bar.style.marginTop = "6px"; tw.appendChild(bar);
+    hd.appendChild(tw); hd.appendChild(el("span", "arrow", "▶"));
+    function tog(){ if(c.classList.contains("locked")){ toast("🔒 " + lockMsg.textContent); return; } c.classList.toggle("open"); open[ch.id] = c.classList.contains("open"); save(OPENKEY, open); hd.setAttribute("aria-expanded", open[ch.id] ? "true" : "false"); }
+    hd.addEventListener("click", tog);
+    hd.addEventListener("keydown", function(e){ if(e.key === "Enter" || e.key === " "){ e.preventDefault(); tog(); } });
+    c.appendChild(hd);
+    var body = el("div", "cbody");
+    var num = 0;
+    ch.sections.forEach(function(se){
+      var box = el("div", "sec" + (se.opt ? " opt" : "")); box.id = "sec-" + ch.id + "-" + se.id;
+      var h3 = el("h3"); h3.setAttribute("role", "button"); h3.tabIndex = 0;
+      var tt = el("b", null, se.title + (se.opt ? " ⭐ (bonus)" : "")); h3.appendChild(tt);
+      var sc = el("span"); h3.appendChild(sc); box.appendChild(h3);
+      var sh = el("a", "help sechelp", "🆘 Need Help"); sh.href = se.help; sh.target = "_blank"; sh.rel = "noopener";
+      sh.title = "Open this part of the Zelda Dungeon guide"; sh.addEventListener("click", function(e){ e.stopPropagation(); });
+      var hb = el("button", "here", "📍 I'm already here!"); hb.type = "button";
+      hb.addEventListener("click", function(e){ e.stopPropagation(); startHere(ch.id, se.id); });
+      var hrow = el("div", "sechelprow"); hrow.appendChild(hb); hrow.appendChild(sh); box.appendChild(hrow);
+      var lk = el("div", "seclock"); box.appendChild(lk);
+      if(se.opt){ box.appendChild(el("div", "foldtip", "⭐ Bonus part, folded to save space. Tap the title to open it.")); }
+      var ol = el("ol");
+      se.steps.forEach(function(st){
+        var li = el("li"); li.id = "s-" + st[0];
+        if(isNote(st)){ li.className = "note"; var nb = el("div", "notebox", (st[1].indexOf("🔧") === 0 ? "" : "ℹ️ ") + st[1]); if(st[6]) nb.appendChild(el("span", "chg", "⚠️ may be different in the new version")); li.appendChild(nb); ol.appendChild(li); return; }
+        num++;
+        var lab = el("label", "step");
+        var cb = document.createElement("input"); cb.type = "checkbox"; cb.dataset.id = st[0]; cb.checked = !!done[st[0]];
+        lab.appendChild(cb); lab.appendChild(el("span", "num", num + "."));
+        var tx = el("span", "txt", st[1]);
+        if(st[2] === "KS"){ var k = ksInfo(st); tx.appendChild(el("span", "badge b-KS " + k.cls, k.label)); }
+        else if(st[2] && BADGE[st[2]]) tx.appendChild(el("span", "badge " + BADGE[st[2]][0], BADGE[st[2]][1]));
+        if(st[5]) tx.appendChild(el("span", "reward", "🎁 Reward: " + st[5]));
+        if(st[3]) tx.appendChild(el("span", "hint", "💡 " + st[3]));
+        if(st[6]) tx.appendChild(el("span", "chg", "⚠️ may be different in the new version"));
+        lab.appendChild(tx); li.appendChild(lab); ol.appendChild(li);
+        if(cb.checked) lab.classList.add("on");
+        cb.addEventListener("change", function(){
+          if(cb.checked){ done[st[0]] = 1; } else { delete done[st[0]]; }
+          lab.classList.toggle("on", cb.checked); save(KEY, done); if(cb.checked) sparkle(lab); update(true);
+        });
+      });
+      box.appendChild(ol); body.appendChild(box);
+      se._box = box; se._count = sc; se._lock = lk; se._key = ch.id + "-" + se.id;
+      function stog(){
+        if(box.classList.contains("locked")){ toast("🔒 " + lk.textContent); return; }
+        if(box.classList.contains("complete") || se.opt){ peek[se._key] = !peek[se._key]; update(false); }
+      }
+      h3.addEventListener("click", stog);
+      h3.addEventListener("keydown", function(e){ if(e.key === "Enter" || e.key === " "){ e.preventDefault(); stog(); } });
+    });
+    c.appendChild(body); root.appendChild(c);
+    ch._el = c; ch._bar = bar;
+  });
+}
+var prev = null;
+function computeState(){
+  // Walk required sections in order; a section is unlocked when every REQUIRED section before it is complete.
+  var blocker = null, st = {chap:{}, sec:{}};
+  DATA.forEach(function(ch){
+    var chBlock = blocker;
+    st.chap[ch.id] = {locked: !unlockAll && !!chBlock, by: chBlock};
+    ch.sections.forEach(function(se){
+      var n = 0, d = 0;
+      se.steps.forEach(function(s){ if(isNote(s)) return; n++; if(done[s[0]]) d++; });
+      var complete = n > 0 && d === n;
+      st.sec[ch.id + "-" + se.id] = {n: n, d: d, complete: complete, locked: !unlockAll && !!blocker, by: blocker};
+      if(!se.opt && !complete && !blocker) blocker = {ch: ch, se: se};
+    });
+  });
+  return st;
+}
+function update(celebrate){
+  var S = computeState();
+  var all = 0, allD = 0, got = {HP:[0,0],HC:[0,0],KS:[0,0],TR:[0,0]};
+  DATA.forEach(function(ch){
+    var n = 0, d = 0, cs = S.chap[ch.id];
+    ch.sections.forEach(function(se){
+      var ss = S.sec[se._key];
+      se.steps.forEach(function(s){ if(isNote(s)) return; if(s[2] && got[s[2]]){ got[s[2]][1]++; if(done[s[0]]) got[s[2]][0]++; } });
+      n += ss.n; d += ss.d;
+      se._count.textContent = ss.locked ? "🔒" : (ss.d + "/" + ss.n + (ss.complete ? " ✅" : ""));
+      se._box.classList.toggle("locked", ss.locked);
+      se._box.classList.toggle("complete", ss.complete && !ss.locked);
+      se._box.classList.toggle("peek", !!peek[se._key]);
+      se._box.classList.toggle("bfold", !!se.opt && !ss.locked && !ss.complete && !peek[se._key]);
+      var h3e = se._box.firstChild, exp = !ss.locked && (se.opt ? !!peek[se._key] || false : (!ss.complete || !!peek[se._key]));
+      if(se.opt && !ss.locked && !ss.complete) exp = !!peek[se._key];
+      h3e.setAttribute("aria-expanded", exp ? "true" : "false"); h3e.setAttribute("aria-disabled", ss.locked ? "true" : "false");
+      h3e.setAttribute("aria-label", se.title + (se.opt ? ", bonus" : "") + ", " + (ss.locked ? "locked" : ss.d + " of " + ss.n + " done"));
+      se._lock.textContent = ss.locked ? "🔒 Finish \u201c" + ss.by.se.title + "\u201d first!" : "";
+      if(celebrate && prev && prev.sec[se._key].locked && !ss.locked && !se.opt) toast("🔓 New part unlocked: " + se.title + "!");
+      if(celebrate && prev && !prev.sec[se._key].complete && ss.complete) toast("✅ Great job! \u201c" + se.title + "\u201d is done!");
+    });
+    setBar(ch._bar, d, n); all += n; allD += d;
+    ch._el.classList.toggle("locked", cs.locked);
+    ch._lockMsg.textContent = cs.locked ? "🔒 Finish Chapter " + cs.by.ch._num + ": " + cs.by.ch.name + " first!" : "";
+    if(cs.locked) ch._el.classList.remove("open");
+    else if(open[ch.id] === undefined) { open[ch.id] = true; ch._el.classList.add("open"); }
+    else ch._el.classList.toggle("open", !!open[ch.id]);
+    if(celebrate && prev && prev.chap[ch.id].locked && !cs.locked){ open[ch.id] = true; ch._el.classList.add("open"); save(OPENKEY, open); toast("🎉 Chapter " + ch._num + ": " + ch.name + " is unlocked!"); }
+    var fin = d === n && n > 0; ch._el.classList.toggle("done", fin);
+    var che = ch._el.firstChild; che.setAttribute("aria-expanded", ch._el.classList.contains("open") ? "true" : "false"); che.setAttribute("aria-disabled", cs.locked ? "true" : "false");
+    if(celebrate && fin && prev && !ch._wasDone) toast("🎉 Yay Katie! " + ch.name + " is all done!");
+    ch._wasDone = fin;
+  });
+  updateGroup(S);
+  setBar(document.querySelector("#allbar"), allD, all);
+  var s = document.getElementById("stats"); s.textContent = "";
+  var kg = [0,0], kf = [0,0];
+  DATA.forEach(function(ch){ ch.sections.forEach(function(se){ se.steps.forEach(function(x){ if(x[2] !== "KS" || isNote(x)) return; var k = ksInfo(x), a = k.fuse ? kf : kg; a[1]++; if(done[x[0]]) a[0]++; }); }); });
+  var ksS = document.getElementById("ksStats"); ksS.textContent = "";
+  ksS.appendChild(el("span", "pill kspill", (CFG.ksPill ? CFG.ksPill[0] + kg[0] + "/" + kg[1] + CFG.ksPill[1] + kf[0] + "/" + kf[1] : "💎 Kinstones found: " + kg[0] + "/" + kg[1] + " · ✨ Fusions: " + kf[0] + "/" + kf[1])));
+  updateKsList();
+  document.getElementById("sum-ks").textContent = (CFG.ksSum || ["💎 ", " · ✨ "])[0] + kg[0] + "/" + kg[1] + (CFG.ksSum || ["💎 ", " · ✨ "])[1] + kf[0] + "/" + kf[1];
+  var PCT = Math.round(allD * 100 / Math.max(all,1)); document.getElementById("yhSteps").textContent = "✅ " + allD + " of " + all + " steps done · " + PCT + "%";
+  [["💗 Heart Pieces","HP"],["❤️ Containers","HC"],["🎁 Treasures","TR"]].forEach(function(x){ s.appendChild(el("span", "pill", x[0] + ": " + got[x[1]][0] + "/" + got[x[1]][1])); });
+  var ub = document.getElementById("unlockBtn");
+  ub.textContent = unlockAll ? "🔓 Grown-up: unlocked (tap to lock again)" : "🔒 Grown-up: unlock all";
+  ub.classList.toggle("active", unlockAll);
+  updateGear(); updatePicker(S); saveSummary(S);
+  var cur = null, nxt = null;
+  DATA.forEach(function(ch){ ch.sections.forEach(function(se){ var ss = S.sec[se._key]; if(se.opt || ss.complete) return; if(!cur) cur = {ch: ch, se: se}; else if(!nxt) nxt = {ch: ch, se: se}; }); });
+  document.querySelectorAll(".sec.current").forEach(function(x){ x.classList.remove("current"); });
+  if(cur) cur.se._box.classList.add("current");
+  document.querySelector(".youhere").classList.toggle("won", !cur);
+  document.getElementById("vicBtn").hidden = !!cur;
+  if(!cur && !load(VKEY, false)){ save(VKEY, true); showVictory(); }
+  document.getElementById("yhIco").textContent = cur ? cur.ch.icon : "🏆";
+  document.getElementById("yhCh").textContent = cur ? "Chapter " + cur.ch._num + ": " + cur.ch.name : "All done!";
+  document.getElementById("yhSe").textContent = cur ? cur.se.title : "You beat the game! 🎉";
+  document.getElementById("nextUp").textContent = nxt ? "Next up: " + nxt.se.title + (nxt.ch !== cur.ch ? " (Chapter " + nxt.ch._num + ")" : "") : (cur ? "Next up: the ending! 🏆" : "");
+  document.getElementById("sum-adv").textContent = "🗺️ " + (cur ? cur.ch.name + " · " + cur.se.title.replace(/^\S+\s/, "") : "All done") + " · " + PCT + "%";
+  prev = S;
+}
+function jumpNext(){
+  var S = computeState();
+  for(var i = 0; i < DATA.length; i++){
+    var ch = DATA[i];
+    for(var j = 0; j < ch.sections.length; j++){
+      var se = ch.sections[j], ss = S.sec[se._key];
+      if(se.opt || ss.locked || ss.complete) continue;
+      for(var k = 0; k < se.steps.length; k++){
+        var st = se.steps[k];
+        if(isNote(st) || done[st[0]]) continue;
+        if(ch._el.classList.contains("grouped")){ peekDone = true; update(false); }
+        if(!ch._el.classList.contains("open")){ ch._el.classList.add("open"); open[ch.id] = true; save(OPENKEY, open); }
+        var li = document.getElementById("s-" + st[0]);
+        li.scrollIntoView({behavior:"smooth", block:"center"});
+        li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash");
+        return st[0];
+      }
+    }
+  }
+  toast("🏆 Every main step is done! You're a hero!");
+  return null;
+}
+var ITEMS = CFG.items || [
+["🗡️","Smith's Sword",["c1-b03"]],["⚔️","White Sword",["c3-a02"]],["💧","White Sword + Water",["c5-a12"]],["✨","Four Sword",["c6-b04"]],
+["🛡️","Small Shield",["c1-a09"]],["🪞","Mirror Shield",["c6-e07"]],
+["🌀","Gust Jar",["c1-d43"]],["🦯","Cane of Pacci",["c2-d38"]],["⛏️","Mole Mitts",["c3-g41"]],["🪶","Roc's Cape",["c5-h20"]],["🏮","Flame Lantern",["c4-d70"]],["🎵","Ocarina of Wind",["c3-h28"]],
+["🏹","Bow",["c3-e18"]],["🌟","Light Arrows",["c5-g03"]],["🪃","Boomerang",["c3-d11"]],["🔮","Magical Boomerang",["c4-b43b"]],
+["👟","Pegasus Boots",["c3-c55"]],["🧤","Grip Ring",["c2-c09b"]],["💪","Power Bracelets",["c4-a34"]],["🩱","Flippers",["c4-a74"]],
+["🍶","Bottle #1",["c2-b05"]],["🍶","Bottle #2",["c3-d48"]],["🍶","Bottle #3",["c3-d51c"]],["🍶","Bottle #4",["c6-a38"]],
+["👛","Big Wallet (300)",["c2-a25"]],["💰","Bigger Wallet (500)",["c3-c44"]],["🏦","Biggest Wallet (999)",["c3-d18"]],
+["💣","Bomb Bag",["c2-a05"]],["💣","Big Bomb Bag (30)",["c2-c19"]],["💣","Big Bomb Bag (50)",["c4-b01c"]],["🧨","Biggest Bomb Bag (99)",["c5-a20"]],
+["🎯","Quiver (shop)",["c4-b01"]],["🎯","Quiver (70 arrows)",["c4-b84b"]],["🎯","Quiver (99 arrows)",["c5-b14"]],
+["🌍","Earth Element",["c1-d77"]],["🔥","Fire Element",["c2-d78"]],["💧","Water Element",["c4-e22"]],["🌪️","Wind Element",["c5-i62"]]
+];
+var TIGER = CFG.series ? CFG.series.ids : ["c2-a23","c3-d01b","c3-d02b","c3-d64","c4-c10","c5-a06b","c6-a02","c6-a05b"], SERIES = CFG.series || {icon: "📜", name: "Tiger Scrolls"};
+function renderGear(){
+  var box = document.getElementById("items");
+  ITEMS.concat(TIGER.length ? [[SERIES.icon, SERIES.name, TIGER, 1]] : []).forEach(function(it){
+    var d = el("div", "item"); d.appendChild(el("div", "iic", it[0])); d.appendChild(el("div", "inm", it[1])); var s = el("div", "ist"); d.appendChild(s);
+    it._el = d; it._st = s; box.appendChild(d);
+  });
+  ITEMS._tiger = TIGER.length ? box.lastChild : null;
+}
+function updateGear(){
+  var have = 0;
+  ITEMS.forEach(function(it){
+    var h = it[2].some(function(id){ return !!done[id]; }); if(h) have++;
+    it._el.classList.toggle("have", h); it._st.textContent = h ? "✨ got it!" : "still to find";
+    it._el.dataset.have = h ? "1" : "0";
+  });
+  var tg = TIGER.filter(function(id){ return !!done[id]; }).length, t = ITEMS._tiger, TN = TIGER.length;
+  if(t){ t.classList.toggle("have", tg > 0); t.querySelector(".ist").textContent = tg + " / " + TN + (tg ? "" : " · still to find"); t.dataset.have = tg ? "1" : "0"; }
+  var total = ITEMS.length + (TN ? 1 : 0), hv = have + (TN && tg === TN ? 1 : 0);
+  document.getElementById("itemCounts").textContent = "Have " + hv + " · Still need " + (total - hv);
+  var hp = 0, hc = 0;
+  DATA.forEach(function(ch){ ch.sections.forEach(function(se){ se.steps.forEach(function(s){ if(isNote(s) || !done[s[0]]) return; if(s[2] === "HP") hp++; if(s[2] === "HC") hc++; }); }); });
+  var max = 3 + hc + Math.floor(hp / 4), q = hp % 4, H = document.getElementById("hearts"); H.textContent = "";
+  for(var i = 0; i < max; i++) H.appendChild(el("span", "heart", "❤️"));
+  H.dataset.max = max; H.setAttribute("aria-label", max + " hearts");
+  H.appendChild(el("span", "hcount", max + " hearts"));
+  var M = document.getElementById("hpMeter"); M.textContent = ""; M.dataset.q = q;
+  for(var j = 0; j < 4; j++) M.appendChild(el("span", "qt" + (j < q ? " on" : "")));
+  M.title = q + " of 4 pieces toward the next heart";
+  document.getElementById("hpCounts").textContent = "💗 Heart Pieces " + hp + "/" + (CFG.hpTotal || 44) + " · ❤️ Containers " + hc + "/" + (CFG.hcTotal || 6) + " · next heart: " + q + "/4";
+  document.getElementById("sum-hearts").textContent = "❤️ " + max + " hearts · " + q + "/4";
+  document.getElementById("sum-items").textContent = "🎒 have " + hv + " · need " + (total - hv);
+}
+var KSL = null;
+function goStep(id){
+  for(var i = 0; i < DATA.length; i++){ var ch = DATA[i]; for(var j = 0; j < ch.sections.length; j++){ var se = ch.sections[j];
+    if(!se.steps.some(function(s){ return s[0] === id; })) continue;
+    if(ch._el.classList.contains("locked") || se._box.classList.contains("locked")){ toast("🔒 " + (se._lock.textContent || ch._lockMsg.textContent)); se._box.scrollIntoView({behavior:"smooth", block:"start"}); if(!ch._el.classList.contains("locked")){ ch._el.classList.add("open"); } return false; }
+    if(ch._el.classList.contains("grouped")){ peekDone = true; update(false); }
+    ch._el.classList.add("open"); open[ch.id] = true; save(OPENKEY, open);
+    if((se._box.classList.contains("complete") || se._box.classList.contains("bfold")) && !peek[se._key]){ peek[se._key] = 1; update(false); }
+    var li = document.getElementById("s-" + id); li.scrollIntoView({behavior:"smooth", block:"center"});
+    li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash"); return true;
+  } }
+  return false;
+}
+function updateKsList(){
+  var td = document.getElementById("ksTodo"), dn = document.getElementById("ksDone");
+  if(!KSL){ KSL = [];
+    DATA.forEach(function(ch){ ch.sections.forEach(function(se){ se.steps.forEach(function(x){
+      if(x[2] !== "KS" || isNote(x)) return; var k = ksInfo(x);
+      var li = el("li"), a = el("a", "kslink", (k.fuse ? "✨ " : "💎 ") + x[1].replace(/\s*\[.*$/, "")); a.href = "#s-" + x[0]; a.dataset.id = x[0];
+      a.addEventListener("click", function(e){ e.preventDefault(); goStep(x[0]); });
+      li.appendChild(a); li.appendChild(el("span", "kswhere", "Ch " + ch._num + " · " + se.title + (se.opt ? " ⭐" : "")));
+      KSL.push({id: x[0], li: li});
+    }); }); });
+  }
+  KSL.forEach(function(o){ (done[o.id] ? dn : td).appendChild(o.li); });
+}
+
+function sparkle(lab){
+  if(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  ["✨","⭐","✨","💫"].forEach(function(s, i){ var e = el("span", "spark", s); var a = i * 1.57 + Math.random(); e.style.setProperty("--dx", Math.round(Math.cos(a) * 34) + "px"); e.style.setProperty("--dy", Math.round(Math.sin(a) * 30 - 10) + "px"); lab.appendChild(e); setTimeout(function(){ e.remove(); }, 850); });
+}
+function initCfg(){ if(CFG.heartNote){ var h = document.getElementById("heartNote"); h.textContent = CFG.heartNote; h.hidden = false; } }
+document.addEventListener("DOMContentLoaded", initCfg);
+function initFab(){
+  var fab = document.getElementById("jumpFab"), big = document.getElementById("jumpBtn");
+  if(!("IntersectionObserver" in window)) return;
+  new IntersectionObserver(function(es){ es.forEach(function(e){ fab.classList.toggle("hide", e.isIntersecting); }); }).observe(big);
+}
+document.addEventListener("DOMContentLoaded", function(){ initFab(); });
+
+
+var VKEY = NS + ".victory.v1", peekDone = false;
+function reqDone(ch, S){ return ch.sections.every(function(se){ return se.opt || S.sec[se._key].complete; }); }
+function updateGroup(S){
+  var nums = [];
+  DATA.forEach(function(ch){ var g = reqDone(ch, S); ch._el.classList.toggle("grouped", g && !peekDone); ch._el.dataset.reqdone = g ? "1" : "0"; if(g) nums.push(ch._num); });
+  var row = document.getElementById("doneRow"); row.hidden = !nums.length;
+  if(!nums.length){ peekDone = false; return; }
+  var run = nums.every(function(n, i){ return i === 0 || n === nums[i - 1] + 1; });
+  var label = nums.length === 1 ? "Chapter " + nums[0] : "Chapters " + (run ? nums[0] + "\u2013" + nums[nums.length - 1] : nums.slice(0, -1).join(", ") + " & " + nums[nums.length - 1]);
+  document.getElementById("doneTxt").textContent = "✅ " + label + " done!";
+  document.getElementById("doneTap").textContent = peekDone ? "(tap to fold) ▾" : "(tap to peek) ▸";
+  row.setAttribute("aria-expanded", peekDone ? "true" : "false");
+}
+function confettiBurst(){
+  if(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var c = document.getElementById("confetti"); if(!c.getContext) return; var x = null; try { x = c.getContext("2d"); } catch(e){} if(!x) return;
+  var W = c.width = innerWidth, H = c.height = innerHeight, cols = ["#ffe66d","#5fe0a0","#ff8fd0","#c49bff","#7ec8ff","#fff"], P = [];
+  for(var i = 0; i < 160; i++) P.push({x: W / 2, y: H * .35, vx: (Math.random() - .5) * 14, vy: -Math.random() * 14 - 4, s: 5 + Math.random() * 7, r: Math.random() * 6, vr: (Math.random() - .5) * .4, c: cols[i % cols.length]});
+  var t0 = performance.now();
+  (function fr(now){ x.clearRect(0, 0, W, H); P.forEach(function(p){ p.vy += .35; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.r += p.vr; x.save(); x.translate(p.x, p.y); x.rotate(p.r); x.fillStyle = p.c; x.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2); x.restore(); });
+    if(now - t0 < 4000 && document.getElementById("victory").classList.contains("show")) requestAnimationFrame(fr); else x.clearRect(0, 0, W, H); })(t0);
+}
+function showVictory(){
+  var hp = 0, hc = 0, ks = 0, kt = 0;
+  DATA.forEach(function(ch){ ch.sections.forEach(function(se){ se.steps.forEach(function(s){ if(isNote(s)) return; if(s[2] === "KS" && !ksInfo(s).fuse){ kt++; if(done[s[0]]) ks++; } if(!done[s[0]]) return; if(s[2] === "HP") hp++; if(s[2] === "HC") hc++; }); }); });
+  document.getElementById("vHearts").textContent = 3 + hc + Math.floor(hp / 4);
+  document.getElementById("vHp").textContent = hp + "/" + (CFG.hpTotal || 44);
+  document.getElementById("vKs").textContent = ks + "/" + kt;
+  var v = document.getElementById("victory"); v.classList.add("show"); document.getElementById("vClose").focus(); confettiBurst();
+}
+function hideVictory(){ document.getElementById("victory").classList.remove("show"); }
+document.addEventListener("DOMContentLoaded", function(){
+  document.getElementById("vicBtn").onclick = showVictory;
+  document.getElementById("vClose").onclick = hideVictory; document.getElementById("vStay").onclick = hideVictory;
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape") hideVictory(); });
+  var row = document.getElementById("doneRow");
+  function tg(){ peekDone = !peekDone; update(false); }
+  row.addEventListener("click", tg); row.addEventListener("keydown", function(e){ if(e.key === "Enter" || e.key === " "){ e.preventDefault(); tg(); } });
+});
+
+var PANELKEY = NS + ".panels";
+function initPanels(){
+  var ps = load(PANELKEY, {}), phone = window.matchMedia && window.matchMedia("(max-width:560px)").matches;
+  document.querySelectorAll("details.fp").forEach(function(d){
+    if("p-where" in ps && !("p-adv" in ps)){ ps["p-adv"] = ps["p-where"]; delete ps["p-where"]; save(PANELKEY, ps); }
+    d.open = (d.id in ps) ? !!ps[d.id] : (d.id === "p-tools" ? false : !phone);
+    d.addEventListener("toggle", function(){ var s = load(PANELKEY, {}); s[d.id] = d.open; save(PANELKEY, s); });
+  });
+}
+var SUMKEY = NS + ".summary.v1";
+function saveSummary(S){
+  var rq = 0, rd = 0, cur = null, hp = 0, hc = 0;
+  DATA.forEach(function(ch){ ch.sections.forEach(function(se){
+    se.steps.forEach(function(s){ if(isNote(s) || !done[s[0]]) return; if(s[2] === "HP") hp++; if(s[2] === "HC") hc++; });
+    if(se.opt) return; var ss = S.sec[se._key]; rq += ss.n; rd += ss.d;
+    if(!cur && !ss.complete) cur = {ch: ch, se: se};
+  }); });
+  save(SUMKEY, {pct: rd >= rq ? 100 : Math.min(99, Math.round(rd * 100 / Math.max(rq, 1))), complete: rd >= rq, done: rd, total: rq, chNum: cur ? cur.ch._num : 0, chapter: cur ? cur.ch.name : "All done!", section: cur ? cur.se.title : "You beat the game!", icon: cur ? cur.ch.icon : "🏆", hearts: 3 + hc + Math.floor(hp / 4), hp: hp, hc: hc, t: Date.now()});
+}
+var PRESET = CFG.preset ? new RegExp(CFG.preset) : /Big Wallet|Big Bomb Bag|Bottle #1|Empty Bottle #2|Pegasus Boots|White Sword|Earth Element|Fire Element/;
+function startHere(chId, secId, quiet){
+  var target = null, before = [];
+  for(var i = 0; i < DATA.length && !target; i++){
+    for(var j = 0; j < DATA[i].sections.length; j++){
+      var se = DATA[i].sections[j];
+      if(DATA[i].id === chId && se.id === secId){ target = {ch: DATA[i], se: se}; break; }
+      before.push({ch: DATA[i], se: se});
+    }
+  }
+  if(!target) return false;
+  if(!quiet && !confirm("Start from \u201c" + target.se.title + "\u201d (Chapter " + target.ch._num + ")?\n\nThis ticks every main step before it. Bonus parts are not ticked, but you can pick what she already has next.")) return false;
+  var opts = [];
+  before.forEach(function(b){
+    b.se.steps.forEach(function(st){
+      if(isNote(st)) return;
+      if(!b.se.opt){ done[st[0]] = 1; }
+      else if(st[2]) opts.push({ch: b.ch, se: b.se, st: st});
+    });
+  });
+  save(KEY, done);
+  document.querySelectorAll("label.step input").forEach(function(cb){ cb.checked = !!done[cb.dataset.id]; cb.parentNode.classList.toggle("on", cb.checked); });
+  DATA.forEach(function(ch){ open[ch.id] = ch === target.ch; });
+  save(OPENKEY, open); update(false);
+  target.se._box.scrollIntoView({behavior:"smooth", block:"start"});
+  if(opts.length) showChecklist(opts, target); else toast("📍 Ready! Starting at " + target.se.title);
+  return true;
+}
+function showChecklist(opts, target){
+  var m = document.getElementById("modal"), list = document.getElementById("mlist"); list.textContent = "";
+  var last = null;
+  opts.forEach(function(o){
+    if(o.se !== last){ list.appendChild(el("div", "group", "Chapter " + o.ch._num + " · " + o.se.title)); last = o.se; }
+    var lab = el("label"); var cb = document.createElement("input"); cb.type = "checkbox"; cb.dataset.id = o.st[0];
+    cb.checked = !!done[o.st[0]] || PRESET.test(o.st[1]);
+    var b = o.st[2] === "KS" ? ksInfo(o.st).label : BADGE[o.st[2]][1];
+    lab.appendChild(cb); var tx = el("span", null, o.st[1] + " "); tx.appendChild(el("span", "badge " + (o.st[2] === "KS" ? "b-KS " + ksInfo(o.st).cls : BADGE[o.st[2]][0]), b)); lab.appendChild(tx); list.appendChild(lab);
+  });
+  m.classList.add("show");
+  function close(saveIt){
+    if(saveIt) list.querySelectorAll("input").forEach(function(cb){ if(cb.checked) done[cb.dataset.id] = 1; else delete done[cb.dataset.id]; });
+    save(KEY, done); m.classList.remove("show");
+    document.querySelectorAll("label.step input").forEach(function(cb){ cb.checked = !!done[cb.dataset.id]; cb.parentNode.classList.toggle("on", cb.checked); });
+    update(false); toast("📍 Ready! Starting at " + target.se.title);
+  }
+  document.getElementById("mSave").onclick = function(){ close(true); };
+  document.getElementById("mSkip").onclick = function(){ close(false); };
+}
+function updatePicker(S){
+  var cur = null, p = document.getElementById("herePick");
+  DATA.forEach(function(ch){ ch.sections.forEach(function(se){
+    var ss = S.sec[ch.id + "-" + se.id];
+    if(!se._opt) return;
+    se._opt.textContent = (ss.complete ? "✅ " : "") + se._opt._t + (!cur && !se.opt && !ss.complete ? "  ← you are here" : "");
+    if(!cur && !se.opt && !ss.complete) cur = ch.id + "|" + se.id;
+  }); });
+  if(cur) p.value = cur;
+  p.dataset.current = cur || "";
+}
+function fillPicker(){
+  var p = document.getElementById("herePick");
+  DATA.forEach(function(ch){
+    var g = document.createElement("optgroup"); g.label = "Chapter " + ch._num + ": " + ch.name;
+    ch.sections.forEach(function(se){ var o = document.createElement("option"); o.value = ch.id + "|" + se.id; o.textContent = se.title + (se.opt ? " ⭐" : ""); se._opt = o; o._t = o.textContent; g.appendChild(o); });
+    p.appendChild(g);
+  });
+}
+function setAll(v){ DATA.forEach(function(ch){ if(v && ch._el.classList.contains("locked")) return; ch._el.classList.toggle("open", v); open[ch.id] = v; }); save(OPENKEY, open); }
+document.addEventListener("DOMContentLoaded", function(){
+  initPanels(); render(); renderGear(); fillPicker(); update(false);
+  document.getElementById("hereGo").onclick = function(){ var v = document.getElementById("herePick").value.split("|"); startHere(v[0], v[1]); };
+  document.getElementById("jumpBtn").onclick = jumpNext;
+  document.getElementById("jumpFab").onclick = jumpNext;
+  document.getElementById("openAll").onclick = function(){ setAll(true); };
+  document.getElementById("closeAll").onclick = function(){ setAll(false); };
+  document.getElementById("unlockBtn").onclick = function(){
+    if(!unlockAll){ if(!confirm("Grown-ups only! Unlock every chapter and part? (Use this if a step was skipped.)")) return; unlockAll = true; }
+    else { unlockAll = false; }
+    save(UNLOCKKEY, unlockAll); update(false);
+  };
+  document.getElementById("resetBtn").onclick = function(){
+    if(confirm("Start over? This erases ALL your check marks!") && confirm("Are you really, really sure?")){
+      done = {}; save(KEY, done); peek = {}; peekDone = false; save(VKEY, false);
+      document.querySelectorAll("label.step input").forEach(function(cb){ cb.checked = false; cb.parentNode.classList.remove("on"); });
+      update(false); toast("🔄 Fresh start! Let's go!");
+    }
+  };
+});
+</script>
+</body>
+</html>
