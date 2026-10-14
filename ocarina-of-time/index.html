@@ -354,7 +354,8 @@ function init(host, onApplied){
   function msg(t, cls){ var m = $("xMsg"); m.textContent = t; m.className = "xmsg " + (cls || ""); }
   function makeCode(){ return encode(payload()).then(function(c){ var o = $("xOut"); o.value = c; o.hidden = false; return c; }); }
   var CODE = "", CODED = "";
-  function fresh(){ var p = payload(), key = JSON.stringify(p.d); if(key !== CODED){ CODED = key; CODE = encodeSync(p); $("xOut").value = CODE; encode(p).then(function(c){ if(CODED === key){ CODE = c; $("xOut").value = c; } }); } return CODE; }
+  function setOut(c){ var o = $("xOut"); if(o.value === c) return; o.value = c; if(document.activeElement === o){ try { o.setSelectionRange(0, c.length); } catch(e){} } }
+  function fresh(){ var p = payload(), key = JSON.stringify(p.d); if(key !== CODED){ CODED = key; CODE = encodeSync(p); setOut(CODE); encode(p).then(function(c){ if(CODED === key){ CODE = c; setOut(c); } }); } return CODE; }
   fresh();
   ["focusin", "pointerdown", "touchstart"].forEach(function(ev){ host.addEventListener(ev, fresh, {passive: true}); });
   window.addEventListener("storage", fresh); document.addEventListener("visibilitychange", fresh);
